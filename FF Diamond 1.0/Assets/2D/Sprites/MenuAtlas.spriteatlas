@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MenuAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 3778d55ca73db0045b3aea5f70118746, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - a3473061f097bd244893643706f0fe9b: 21300000
+    - a1ca41522d71db84eae0d6758310b9bb: 21300000
+    - 5430bd52c8e453f428f943d99e5cce2a: 21300000
+    - e45d20d41f28bd741ba7aac7e1613be5: 21300000
+    - a80c31e41225d1942b0bd68aed066d26: 21300000
+    - 50259335040db294ab30a24c5e364579: 21300000
+    - 0f374345d12534047ba03443330df2b9: 21300000
+    - cab205e53f360d74eba8ec244f07805f: 21300000
+    - bb9874d713dbfd64e9e4345862926158: 21300000
+    - 5145375ccca2bc0478647d91f52b42d8: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a3473061f097bd244893643706f0fe9b, type: 3}
+  - {fileID: 21300000, guid: a1ca41522d71db84eae0d6758310b9bb, type: 3}
+  - {fileID: 21300000, guid: 5430bd52c8e453f428f943d99e5cce2a, type: 3}
+  - {fileID: 21300000, guid: e45d20d41f28bd741ba7aac7e1613be5, type: 3}
+  - {fileID: 21300000, guid: a80c31e41225d1942b0bd68aed066d26, type: 3}
+  - {fileID: 21300000, guid: 50259335040db294ab30a24c5e364579, type: 3}
+  - {fileID: 21300000, guid: 0f374345d12534047ba03443330df2b9, type: 3}
+  - {fileID: 21300000, guid: cab205e53f360d74eba8ec244f07805f, type: 3}
+  - {fileID: 21300000, guid: bb9874d713dbfd64e9e4345862926158, type: 3}
+  - {fileID: 21300000, guid: 5145375ccca2bc0478647d91f52b42d8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Free Gems - Sprite
+  - Gift Codes - Sprite
+  - Gem Calculate - Sprite
+  - Arsenal - Sprite
+  - Avatars - Sprite
+  - Side Challenges - Sprite
+  - Transport - Sprite
+  - Title Icon
+  - Pro Tips - Sprite
+  - Companions - Sprite
+  m_RenderDataMap: {}
+  m_Tag: MenuAtlas
+  m_IsVariant: 0

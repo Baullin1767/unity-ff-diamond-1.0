@@ -58,13 +58,12 @@ namespace Editor
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 v.transform.localScale = Vector3.one;
                 v.AddComponent<TextMeshProUGUI>();
-                v.GetComponent<TextMeshProUGUI>().enableAutoSizing = true;
                 Selection.activeGameObject = v;
             });
             
             DrawButton("Create button", () =>
             {
-                var v = new GameObject("Text");
+                var v = new GameObject("Button");
                 v.transform.parent = gos[0].transform;
                 v.AddComponent<RectTransform>();
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -75,7 +74,7 @@ namespace Editor
             
             DrawButton("Create toggle", () =>
             {
-                var v = new GameObject("Text");
+                var v = new GameObject("Toggle");
                 v.transform.parent = gos[0].transform;
                 v.AddComponent<RectTransform>();
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -97,7 +96,7 @@ namespace Editor
             DrawButton("ContentSizeFitter", () => AddComponent<ContentSizeFitter>(gos));
             EditorGUILayout.LabelField("UI - visual", EditorStyles.boldLabel);
             DrawButton("Image", () => AddComponent<Image>(gos));
-            DrawButton("Mask", () => AddComponent<Mask>(gos));
+            DrawButton("RectMask2D", () => AddComponent<RectMask2D>(gos));
             DrawButton("Shadow", () => { 
                 AddComponent<Shadow>(gos);
                 gos[0].GetComponent<Shadow>().effectDistance = new Vector2(-2f, -5f); 
