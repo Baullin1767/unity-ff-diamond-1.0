@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6049162676395693169, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
       propertyPath: m_Name
-      value: HeaderMenu Variant
+      value: HeaderMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6761017101101456458, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
       propertyPath: m_fontSize
@@ -183,6 +183,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 593153503905473054, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
+    - {fileID: 7576529606671331631, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
