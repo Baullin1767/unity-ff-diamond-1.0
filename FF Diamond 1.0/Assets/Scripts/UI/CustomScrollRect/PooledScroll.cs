@@ -40,7 +40,7 @@ namespace UI.CustomScrollRect
             if (!viewport) viewport = scroll.viewport;
             _row = itemHeight + spacing;
 
-            _data = await DataManager.GetItemData(dataType);
+            _data = await DataManager.GetItemsData(dataType);
             _totalCount = _data.Length;
             
             float height = _totalCount > 0 ? (_row * _totalCount) : 0f;

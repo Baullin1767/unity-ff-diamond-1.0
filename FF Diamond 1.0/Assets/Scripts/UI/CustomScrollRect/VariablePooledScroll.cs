@@ -43,7 +43,7 @@ namespace UI.CustomScrollRect
             if (!scroll) scroll = GetComponent<ScrollRect>();
             if (!viewport) viewport = scroll.viewport;
 
-            _data = await DataManager.GetItemData(dataType);
+            _data = await DataManager.GetItemsData(dataType);
             _totalCount = _data.Length;
 
             if (_totalCount == 0)

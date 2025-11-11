@@ -54,7 +54,7 @@ namespace Plugins.Dropbox
         }
 
 
-        public static async UniTask<Texture2D> DownloadTexture(string path,
+        public static async UniTask<Sprite> DownloadSprite(string path,
     CancellationToken cancellationToken = default, IProgress<float> progress = null)
         {
 
@@ -90,7 +90,13 @@ namespace Plugins.Dropbox
 
             var tex = new Texture2D(2, 2);
             tex.LoadImage(content);
-            return tex;
+            Sprite sprite = Sprite.Create(
+                tex,
+                new Rect(0, 0, tex.width, tex.height),
+                new Vector2(0.5f, 0.5f),
+                100f
+            );
+            return sprite;
         }
     }
 }
