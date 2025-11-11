@@ -13,9 +13,9 @@ namespace Plugins.Dropbox
         private const string AppSecret = "w62ypmwfybu3a5l";
 
 #if UNITY_EDITOR
-		private const string AuthCode = "";
+		private const string AuthCode = "k_NEn1_GHiMAAAAAAAAwWQREpwsyx1oMMFLrcC8gF_g";
 #endif
-        private const string RefreshToken = "";
+        private const string RefreshToken = "PdOeX1s0D1IAAAAAAAAAAc0lmbKlY6iZrRHLG2rmsmoYqaT1PnXZ8wu7RF4gvAEw";
 
 		private static string _tempRuntimeToken = null;
 
