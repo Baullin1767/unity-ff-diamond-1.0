@@ -23,21 +23,21 @@ namespace Data
             public static Stats Parse(JObject j) =>
                 Map(j, new Dictionary<string, Action<Stats, JToken>>
                 {
-                    { "damage",     (o,v) => o.damage    = AsInt(v)    },
-                    { "rateOfFire", (o,v) => o.rateOfFire= AsInt(v)    },
-                    { "range",      (o,v) => o.range     = AsInt(v)    },
-                    { "ammoType",   (o,v) => o.ammoType  = AsString(v) },
+                    { "sjkfsdmf",     (o,v) => o.damage    = AsInt(v)    },
+                    { "wgjkdsg", (o,v) => o.rateOfFire= AsInt(v)    },
+                    { "dgnmgfkg",      (o,v) => o.range     = AsInt(v)    },
+                    { "agfdvdf",   (o,v) => o.ammoType  = AsString(v) },
                 });
         }
 
         public static GameWeapons Parse(JObject j) =>
             Map(j, new Dictionary<string, Action<GameWeapons, JToken>>
             {
-                { "desc",  (o,v) => o.desc  = AsString(v) },
-                { "title", (o,v) => o.title = AsString(v) },
-                { "image", (o,v) => o.image = AsString(v) },
-                { "stats", (o,v) => { if (v is JObject o2) o.stats = Stats.Parse(o2); } },
-                { "tags",  (o,v) => o.tags = AsStringArray(v) },
+                { "45ggfdgdgf",  (o,v) => o.desc  = AsString(v) },
+                { "fbdfvvds", (o,v) => o.title = AsString(v) },
+                { "saaxasdasd", (o,v) => o.image = AsString(v) },
+                { "hnvekdfv", (o,v) => { if (v is JObject o2) o.stats = Stats.Parse(o2); } },
+                { "sdsfeffdg",  (o,v) => o.tags = AsStringArray(v) },
             });
     }
 }

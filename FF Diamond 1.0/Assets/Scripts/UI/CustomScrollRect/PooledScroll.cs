@@ -17,7 +17,8 @@ namespace UI.CustomScrollRect
 
         [Header("Layout")]
         [SerializeField] private float itemHeight = 160f;
-        [SerializeField] private float spacing = 8f;
+        [SerializeField] private float spacing = 33f;
+        [SerializeField] private float padding = 200f;
         private int _totalCount;
 
         [Header("Pool")]
@@ -43,7 +44,7 @@ namespace UI.CustomScrollRect
             _totalCount = _data.Length;
             
             float height = _totalCount > 0 ? (_row * _totalCount) : 0f;
-            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height - spacing + padding);
 
             _visibleCount = Mathf.CeilToInt(viewport.rect.height / _row) + extraBuffer;
 
@@ -83,7 +84,7 @@ namespace UI.CustomScrollRect
                     rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, top, itemHeight);
                     rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, content.rect.width);
 
-                    view.Bind(dataIndex, _data[dataIndex]);
+                    view.Bind(_data[dataIndex]);
                 }
                 else
                 {

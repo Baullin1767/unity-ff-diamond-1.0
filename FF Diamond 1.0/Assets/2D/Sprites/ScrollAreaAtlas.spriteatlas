@@ -50,21 +50,33 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 9c4b1cc1f72b70b47b5173ae8bbda552: 486532271
+    - 16673636ccecc614c9c6d23c7ea4c439: 21300000
+    - 1c6b4046a6c6edf41906c747a8a56b5f: 21300000
     - 061f06a7c28ed1548847186084a3def8: 21300000
     - 00f350b735f5e0d4ebc727b20e5a485e: 1130892302
     - 4594910abbc3a3249a58dff06fc5d649: 21300000
-    - fb656d8e09860424cabf011fb869ae45: 21300000
+    - e691da0e97c4d5945864c631e0880673: 21300000
+    - fb656d8e09860424cabf011fb869ae45: -267753981
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 486532271, guid: 9c4b1cc1f72b70b47b5173ae8bbda552, type: 3}
+  - {fileID: 21300000, guid: 16673636ccecc614c9c6d23c7ea4c439, type: 3}
+  - {fileID: 21300000, guid: 1c6b4046a6c6edf41906c747a8a56b5f, type: 3}
   - {fileID: 21300000, guid: 061f06a7c28ed1548847186084a3def8, type: 3}
   - {fileID: 1130892302, guid: 00f350b735f5e0d4ebc727b20e5a485e, type: 3}
   - {fileID: 21300000, guid: 4594910abbc3a3249a58dff06fc5d649, type: 3}
-  - {fileID: 21300000, guid: fb656d8e09860424cabf011fb869ae45, type: 3}
+  - {fileID: 21300000, guid: e691da0e97c4d5945864c631e0880673, type: 3}
+  - {fileID: -267753981, guid: fb656d8e09860424cabf011fb869ae45, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Frame 86_0
+  - Frame 85
+  - Polygon 2
   - Frame 63
   - Component 27_0
   - Component 25
-  - Frame 67
+  - Union
+  - Frame 67_0
   m_RenderDataMap: {}
   m_Tag: ScrollAreaAtlas
   m_IsVariant: 0

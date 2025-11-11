@@ -12,19 +12,19 @@ namespace Data
             switch (dataType)
             {
                 case DataType.RedeemCodes:
-                    return Path.Combine(baseFolder, "FDIDDS", baseFileName);
+                    return $"{baseFolder}/FDIDDS/{baseFileName}";
                 case DataType.TipsATricks:
-                    return Path.Combine(baseFolder, "CAASF", baseFileName);
+                    return $"{baseFolder}/CAASF/{baseFileName}";
                 case DataType.FreeDiamond:
-                    return Path.Combine(baseFolder, "FDSVSA", baseFileName);
+                    return $"{baseFolder}/FDSVSA/{baseFileName}";
                 case DataType.GameVehicles:
-                    return Path.Combine(baseFolder, "FSAECS", baseFileName);
+                    return $"{baseFolder}/FSAECS/{baseFileName}";
                 case DataType.GameWeapons:
-                    return Path.Combine(baseFolder, "CSAQDF", baseFileName);
+                    return $"{baseFolder}/CSAQDF/{baseFileName}";
                 case DataType.Pets:
-                    return Path.Combine(baseFolder, "VSDSFE", baseFileName);
+                    return $"{baseFolder}/VSDSFE/{baseFileName}";
                 case DataType.Quiz:
-                    return Path.Combine(baseFolder, "34gdfS", baseFileName);
+                    return $"{baseFolder}/34gdfS/{baseFileName}";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(dataType), dataType, null);
             }

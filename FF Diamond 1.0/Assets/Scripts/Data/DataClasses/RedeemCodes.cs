@@ -16,10 +16,10 @@ namespace Data
         public static RedeemCodes Parse(JObject j) =>
             Map(new JObjectSafe(j), new Dictionary<string, Action<RedeemCodes, JToken>>
             {
-                { "desc", (o, v) => o.desc = AsString(v) },
-                { "code", (o, v) => o.code = AsString(v) },
-                { "date", (o, v) => o.date = AsDate(v) },
-                { "isActive", (o, v) => o.isActive = AsBool(v) },
+                { "23fdsf", (o, v) => o.desc = AsString(v) },
+                { "gfjkgfd", (o, v) => o.code = AsString(v) },
+                { "45gfdhfh", (o, v) => o.date = AsDate(v) },
+                { "43gfgdf", (o, v) => o.isActive = AsBool(v) },
             });
 
         private sealed class JObjectSafe : JObject

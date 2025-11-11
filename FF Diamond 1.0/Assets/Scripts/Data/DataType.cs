@@ -8,6 +8,7 @@ namespace Data
         GameVehicles,
         GameWeapons,
         Pets,
-        Quiz
+        Quiz,
+        Characters
     }
 }

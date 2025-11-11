@@ -592,8 +592,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 765.9101, y: -332.87}
-  m_SizeDelta: {x: 348.51, y: 79.65}
+  m_AnchoredPosition: {x: 624.8, y: -332.87}
+  m_SizeDelta: {x: 630.8, y: 79.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7019274158314274450
 CanvasRenderer:
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Panel
+  m_text: Gift Codes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3e5a41d3e60e834aaa139fa109d7b5c, type: 2}
   m_sharedMaterial: {fileID: -5916300612574168915, guid: c3e5a41d3e60e834aaa139fa109d7b5c, type: 2}
@@ -651,13 +651,13 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 86.6
-  m_fontSizeBase: 114.8
+  m_fontSizeBase: 86.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -666,7 +666,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
