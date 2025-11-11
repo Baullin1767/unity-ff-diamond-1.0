@@ -18,8 +18,7 @@ namespace UI.CustomScrollRect
         [Header("Layout")]
         [SerializeField] private float itemHeight = 160f;
         [SerializeField] private float spacing = 8f;
-        [SerializeField] private bool diferentItemHeight = false;
-        private int totalCount;
+        private int _totalCount;
 
         [Header("Pool")]
         [SerializeField] private int extraBuffer = 2;
@@ -32,18 +31,18 @@ namespace UI.CustomScrollRect
         private int _firstIndex;
         private float _row;
 
-        private IData[] _data;
+        private object[] _data;
 
-        void Awake()
+        async void Awake()
         {
             if (!scroll) scroll = GetComponent<ScrollRect>();
             if (!viewport) viewport = scroll.viewport;
             _row = itemHeight + spacing;
 
-            _data = DataManager.GetItemData(dataType);
-            totalCount = _data.Length;
+            _data = await DataManager.GetItemData(dataType);
+            _totalCount = _data.Length;
             
-            float height = totalCount > 0 ? (_row * totalCount) : 0f;
+            float height = _totalCount > 0 ? (_row * _totalCount) : 0f;
             content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
 
             _visibleCount = Mathf.CeilToInt(viewport.rect.height / _row) + extraBuffer;
@@ -63,7 +62,7 @@ namespace UI.CustomScrollRect
         {
             float y = content.anchoredPosition.y;
             int newFirst = Mathf.FloorToInt(y / _row);
-            newFirst = Mathf.Clamp(newFirst, 0, Mathf.Max(0, totalCount - _visibleCount));
+            newFirst = Mathf.Clamp(newFirst, 0, Mathf.Max(0, _totalCount - _visibleCount));
 
             if (newFirst == _firstIndex && _firstIndex >= 0) return;
             _firstIndex = newFirst;
@@ -72,7 +71,7 @@ namespace UI.CustomScrollRect
             {
                 int dataIndex = _firstIndex + i;
                 var view = _pool[i];
-                if (dataIndex >= 0 && dataIndex < totalCount)
+                if (dataIndex >= 0 && dataIndex < _totalCount)
                 {
                     if (!view.gameObject.activeSelf) view.gameObject.SetActive(true);
 
@@ -91,16 +90,6 @@ namespace UI.CustomScrollRect
                     if (view.gameObject.activeSelf) view.gameObject.SetActive(false);
                 }
             }
-        }
-        
-        public float GetContentSize(List<BaseItemView> _pool)
-        {
-            float height = 0f;
-            foreach (var rt in _pool.Select(item => (RectTransform)item.transform))
-            {
-                height += rt.rect.height + spacing;;
-            }
-            return height;
         }
     }
 }

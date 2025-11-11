@@ -2,6 +2,12 @@ namespace Data
 {
     public enum DataType
     {
-        GiftCodesData
+        RedeemCodes,
+        TipsATricks,
+        FreeDiamond,
+        GameVehicles,
+        GameWeapons,
+        Pets,
+        Quiz
     }
 }

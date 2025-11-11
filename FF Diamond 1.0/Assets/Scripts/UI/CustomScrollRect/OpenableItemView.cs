@@ -3,14 +3,14 @@ using DG.Tweening;
 using UI.CustomScrollRect;
 using UnityEngine;
 
-public class OpenableItemView : GiftCodesItemView
+public class OpenableItemView : BaseItemView
 {
     [SerializeField] private RectTransform panel;
     [SerializeField] float expandedHeight = 600f;
     [SerializeField] float collapsedHeight = 150f;
     private bool _isExpanded = false;
 
-    public void Bind(int index, string data, Action<int> onClick)
+    public override void Bind<T>(int dataIndex, T data)
     {
         button.onClick.AddListener(Toggle);
     }

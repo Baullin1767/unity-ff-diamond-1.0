@@ -9,18 +9,13 @@ namespace Plugins.Dropbox
 {
     public static partial class DropboxHelper
     {
-  //       private const string AppKey = "bls7jqef6itcqpz";
-		// private const string AppSecret = "rwi8u9v2gongmk4";
-        // 1.4
-        private const string AppKey = "prc68mv0zy8i5qa";
-        private const string AppSecret = "i10jvl0asqav9zj";
+        private const string AppKey = "hc29j1jdd2onvf9";
+        private const string AppSecret = "w62ypmwfybu3a5l";
 
 #if UNITY_EDITOR
 		private const string AuthCode = "";
 #endif
-		// private const string RefreshToken = "Ul8yeLWhWvwAAAAAAAAAAa_emyuOCVHwgEqfn-HLG4AKOTTwgX_XZNCmaaUTnuUA";
-        //1.4
-        private const string RefreshToken = "vuXDgQCeXEgAAAAAAAAAAXhkRyu5NOGrnnUgq52WgnqicMYMpnT3PoDjVDjbhGB5";
+        private const string RefreshToken = "";
 
 		private static string _tempRuntimeToken = null;
 

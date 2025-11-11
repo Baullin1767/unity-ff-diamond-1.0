@@ -10,7 +10,7 @@ namespace Plugins.Dropbox
 {
     public static partial class DropboxHelper
     {
-        public static async Task<byte[]> DownloadAsset(string path,
+        public static async UniTask<byte[]> DownloadAsset(string path,
             CancellationToken cancellationToken = default, IProgress<float> progress = null)
         {
             using var downloadHandler = await GetDownloadResult(path, cancellationToken, progress);
@@ -18,7 +18,7 @@ namespace Plugins.Dropbox
             return result;
         }
 
-        public static async Task<string> DownloadText(string path,
+        public static async UniTask<string> DownloadText(string path,
             CancellationToken cancellationToken = default, IProgress<float> progress = null)
         {
             using var downloadHandler = await GetDownloadResult(path, cancellationToken, progress);
@@ -27,7 +27,7 @@ namespace Plugins.Dropbox
             return null;
         }
 
-        private static async Task<DownloadHandler> GetDownloadResult(string path,
+        private static async UniTask<DownloadHandler> GetDownloadResult(string path,
              CancellationToken cancellationToken = default, IProgress<float> progress = null)
         {
             UnityWebRequest request;
@@ -54,7 +54,7 @@ namespace Plugins.Dropbox
         }
 
 
-        public static async Task<Texture2D> DownloadTexture(string path,
+        public static async UniTask<Texture2D> DownloadTexture(string path,
     CancellationToken cancellationToken = default, IProgress<float> progress = null)
         {
 

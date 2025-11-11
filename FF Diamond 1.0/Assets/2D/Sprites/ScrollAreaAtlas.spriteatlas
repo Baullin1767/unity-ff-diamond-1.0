@@ -36,7 +36,7 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
@@ -51,18 +51,18 @@ SpriteAtlas:
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - 061f06a7c28ed1548847186084a3def8: 21300000
-    - 00f350b735f5e0d4ebc727b20e5a485e: 21300000
+    - 00f350b735f5e0d4ebc727b20e5a485e: 1130892302
     - 4594910abbc3a3249a58dff06fc5d649: 21300000
     - fb656d8e09860424cabf011fb869ae45: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 061f06a7c28ed1548847186084a3def8, type: 3}
-  - {fileID: 21300000, guid: 00f350b735f5e0d4ebc727b20e5a485e, type: 3}
+  - {fileID: 1130892302, guid: 00f350b735f5e0d4ebc727b20e5a485e, type: 3}
   - {fileID: 21300000, guid: 4594910abbc3a3249a58dff06fc5d649, type: 3}
   - {fileID: 21300000, guid: fb656d8e09860424cabf011fb869ae45, type: 3}
   m_PackedSpriteNamesToIndex:
   - Frame 63
-  - Component 27
+  - Component 27_0
   - Component 25
   - Frame 67
   m_RenderDataMap: {}
