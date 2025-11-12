@@ -21,20 +21,19 @@ namespace Data
             public static Skills Parse(JObject j) =>
                 Map(j, new Dictionary<string, Action<Skills, JToken>>
                 {
-                    { "health",   (o,v) => o.health   = AsInt(v) },
-                    { "speed",    (o,v) => o.speed    = AsInt(v) },
-                    { "capacity", (o,v) => o.capacity = AsInt(v) },
+                    { "kegk4lgdg",   (o,v) => o.health   = AsInt(v) },
+                    { "43gfgdfg",    (o,v) => o.speed    = AsInt(v) },
+                    { "54hfdgf32", (o,v) => o.capacity = AsInt(v) },
                 });
         }
 
         public static GameVehicles Parse(JObject j) =>
             Map(j, new Dictionary<string, Action<GameVehicles, JToken>>
             {
-                { "desc",   (o,v) => o.desc  = AsString(v) },
-                { "title",  (o,v) => o.title = AsString(v) },
-                { "image",  (o,v) => o.image = AsString(v) },
-                // вложенность: "skills" -> объект
-                { "skills", (o,v) => { if (v is JObject o2) o.skills = Skills.Parse(o2); } },
+                { "45hgfdh65",   (o,v) => o.desc  = AsString(v) },
+                { "vdfhtdfyy5",  (o,v) => o.title = AsString(v) },
+                { "34gfddhrh",  (o,v) => o.image = AsString(v) },
+                { "eggdf5dfg", (o,v) => { if (v is JObject o2) o.skills = Skills.Parse(o2); } },
             });
     }
 }

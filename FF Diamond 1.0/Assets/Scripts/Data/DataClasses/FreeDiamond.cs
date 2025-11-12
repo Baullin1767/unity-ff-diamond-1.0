@@ -14,9 +14,9 @@ namespace Data
         public static FreeDiamond Parse(JObject j) =>
             Map(j, new Dictionary<string, Action<FreeDiamond, JToken>>
             {
-                { "content",   (o,v) => o.content    = AsString(v) },
-                { "title",     (o,v) => o.title      = AsString(v) },
-                { "difficulty",(o,v) => o.difficulty = AsString(v) },
+                { "23dasfsd",   (o,v) => o.content    = AsString(v) },
+                { "67hgjghj",     (o,v) => o.title      = AsString(v) },
+                { "34gfdgfg",(o,v) => o.difficulty = AsString(v) },
             });
     }
 }

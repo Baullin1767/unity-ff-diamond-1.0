@@ -50,39 +50,66 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
-    - a3473061f097bd244893643706f0fe9b: 21300000
-    - a1ca41522d71db84eae0d6758310b9bb: 21300000
-    - 5430bd52c8e453f428f943d99e5cce2a: 21300000
-    - e45d20d41f28bd741ba7aac7e1613be5: 21300000
-    - a80c31e41225d1942b0bd68aed066d26: 21300000
-    - 50259335040db294ab30a24c5e364579: 21300000
-    - 0f374345d12534047ba03443330df2b9: 21300000
+    - b7ab59d00d6208444aea96e612a57d9d: 21300000
+    - 240566327dcd6464296162899b5c6ebc: 21300000
+    - 995b6ae2cb14a4e44b8bb49dc882da06: 21300000
+    - 21313f943d65e3b4ca8fa1cc51cea19b: 21300000
     - cab205e53f360d74eba8ec244f07805f: 21300000
-    - bb9874d713dbfd64e9e4345862926158: 21300000
-    - 5145375ccca2bc0478647d91f52b42d8: 21300000
+    - 45c14ce582d9b684aa433dd430f0e8cd: 21300000
+    - 3ef479c7211d4b341b31936bca70cbcf: 21300000
+    - 784904f75618b0342a8fbc01b57f3332: 21300000
+    - 66cefec9fb2cf2d4baaa52913cd41c64: 21300000
+    - 56c97ff933ac7334ea0bc6e6dfe03784: 21300000
+    - bcd25aaa595f1f2409c7c85a0e427992: 21300000
+    - d57d28da0272484419d0478ce61a65d7: 21300000
+    - 2a80f48b5bb9aef438ac9fb58528df64: 21300000
+    - a4a7a78bc77cb014dba7379fbc711d12: 21300000
+    - 60f5e5bb674eb7a4789bbe720dadb9d2: 21300000
+    - 0c0f36dc65776b440966a434489afb1a: 21300000
+    - 709d707efee17754ba3dc5404b3c7c2b: 21300000
+    - 5b8fae9e3238c244b96428bee2ff15df: 21300000
+    - d9ab27dfa1fadb04fb9587067ae41538: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: a3473061f097bd244893643706f0fe9b, type: 3}
-  - {fileID: 21300000, guid: a1ca41522d71db84eae0d6758310b9bb, type: 3}
-  - {fileID: 21300000, guid: 5430bd52c8e453f428f943d99e5cce2a, type: 3}
-  - {fileID: 21300000, guid: e45d20d41f28bd741ba7aac7e1613be5, type: 3}
-  - {fileID: 21300000, guid: a80c31e41225d1942b0bd68aed066d26, type: 3}
-  - {fileID: 21300000, guid: 50259335040db294ab30a24c5e364579, type: 3}
-  - {fileID: 21300000, guid: 0f374345d12534047ba03443330df2b9, type: 3}
+  - {fileID: 21300000, guid: b7ab59d00d6208444aea96e612a57d9d, type: 3}
+  - {fileID: 21300000, guid: 240566327dcd6464296162899b5c6ebc, type: 3}
+  - {fileID: 21300000, guid: 995b6ae2cb14a4e44b8bb49dc882da06, type: 3}
+  - {fileID: 21300000, guid: 21313f943d65e3b4ca8fa1cc51cea19b, type: 3}
   - {fileID: 21300000, guid: cab205e53f360d74eba8ec244f07805f, type: 3}
-  - {fileID: 21300000, guid: bb9874d713dbfd64e9e4345862926158, type: 3}
-  - {fileID: 21300000, guid: 5145375ccca2bc0478647d91f52b42d8, type: 3}
+  - {fileID: 21300000, guid: 45c14ce582d9b684aa433dd430f0e8cd, type: 3}
+  - {fileID: 21300000, guid: 3ef479c7211d4b341b31936bca70cbcf, type: 3}
+  - {fileID: 21300000, guid: 784904f75618b0342a8fbc01b57f3332, type: 3}
+  - {fileID: 21300000, guid: 66cefec9fb2cf2d4baaa52913cd41c64, type: 3}
+  - {fileID: 21300000, guid: 56c97ff933ac7334ea0bc6e6dfe03784, type: 3}
+  - {fileID: 21300000, guid: bcd25aaa595f1f2409c7c85a0e427992, type: 3}
+  - {fileID: 21300000, guid: d57d28da0272484419d0478ce61a65d7, type: 3}
+  - {fileID: 21300000, guid: 2a80f48b5bb9aef438ac9fb58528df64, type: 3}
+  - {fileID: 21300000, guid: a4a7a78bc77cb014dba7379fbc711d12, type: 3}
+  - {fileID: 21300000, guid: 60f5e5bb674eb7a4789bbe720dadb9d2, type: 3}
+  - {fileID: 21300000, guid: 0c0f36dc65776b440966a434489afb1a, type: 3}
+  - {fileID: 21300000, guid: 709d707efee17754ba3dc5404b3c7c2b, type: 3}
+  - {fileID: 21300000, guid: 5b8fae9e3238c244b96428bee2ff15df, type: 3}
+  - {fileID: 21300000, guid: d9ab27dfa1fadb04fb9587067ae41538, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Free Gems - Sprite
-  - Gift Codes - Sprite
-  - Gem Calculate - Sprite
-  - Arsenal - Sprite
-  - Avatars - Sprite
-  - Side Challenges - Sprite
-  - Transport - Sprite
+  - Property 1=pro
+  - Property 1=side1
+  - Property 1=avatars
+  - Property 1=free
   - Title Icon
-  - Pro Tips - Sprite
-  - Companions - Sprite
+  - Property 1=gift
+  - Property 1=side
+  - Property 1=avatars1
+  - Property 1=gift1
+  - Property 1=pro1
+  - Property 1=comp
+  - Property 1=calculate
+  - Property 1=comp1
+  - Property 1=trans
+  - Property 1=arsenal
+  - Property 1=trans1
+  - Property 1=free1
+  - Property 1=arsenal1
+  - Property 1=calculate1
   m_RenderDataMap: {}
   m_Tag: MenuAtlas
   m_IsVariant: 0

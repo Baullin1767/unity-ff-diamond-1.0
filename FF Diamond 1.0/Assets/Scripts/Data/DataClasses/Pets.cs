@@ -17,12 +17,12 @@ namespace Data
         public static Pets Parse(JObject j) =>
             Map(j, new Dictionary<string, Action<Pets, JToken>>
             {
-                { "desc",       (o,v) => o.desc       = AsString(v) },
-                { "title",      (o,v) => o.title      = AsString(v) },
-                { "image",      (o,v) => o.image      = AsString(v) },
-                { "skillName",  (o,v) => o.skillName  = AsString(v) },
-                { "flavorText", (o,v) => o.flavorText = AsString(v) },
-                { "type",       (o,v) => o.type       = AsString(v) },
+                { "hjjkhjmh",       (o,v) => o.desc       = AsString(v) },
+                { "67mgnm",      (o,v) => o.title      = AsString(v) },
+                { "6gjghgfg",      (o,v) => o.image      = AsString(v) },
+                { "ergdfgdfg",  (o,v) => o.skillName  = AsString(v) },
+                { "24vffgdf4", (o,v) => o.flavorText = AsString(v) },
+                { "34gfdhn",       (o,v) => o.type       = AsString(v) },
             });
     }
 }

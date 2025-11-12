@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class OpenableItemView : BaseItemView, IVariableScrollItem
 {
     [SerializeField] private RectTransform panel;
-    [SerializeField] private TMP_Text content;
+    [SerializeField] protected TMP_Text content;
     [SerializeField] private Toggle toggle;
     [SerializeField] private float collapsedHeight = 150f;
     [SerializeField] private float tweenDuration = 0.35f;

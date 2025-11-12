@@ -2,7 +2,7 @@ using Data;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.CustomScrollRect
+namespace UI.CustomScrollRect.Items
 {
     public class RedeemCodesItemView : BaseItemView
     {

@@ -1,4 +1,5 @@
 using System;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -19,9 +20,31 @@ namespace UI.ViewSystem.UIViews
         {
             foreach (var menuButton in buttons)
             {
-                menuButton.ComponentButton.onClick.AddListener(
-                    () => _viewController.ShowScreen(menuButton.UIScreenId));
+                var cachedButton = menuButton;
+                cachedButton.ComponentButton.onClick.AddListener(
+                    () => HandleMenuButtonClick(cachedButton));
             }
+        }
+
+        private void HandleMenuButtonClick(MenuButtons clickedButton)
+        {
+            foreach (var menuButton in buttons)
+            {
+                var buttonVisual = menuButton.MenuButtonComponent;
+                if (buttonVisual == null)
+                    continue;
+
+                if (menuButton.ComponentButton == clickedButton.ComponentButton)
+                {
+                    buttonVisual.Activate();
+                }
+                else
+                {
+                    buttonVisual.Deactivate();
+                }
+            }
+
+            _viewController.ShowScreen(clickedButton.UIScreenId);
         }
 
         public override void Show()
@@ -36,14 +59,18 @@ namespace UI.ViewSystem.UIViews
             baseMenu.SetActive(false);
         }
         
-        [Serializable]
-        public struct MenuButtons
-        {
-            [SerializeField] private Button componentButton;
-            [SerializeField] private UIScreenId uIScreenId;
-            
-            public Button ComponentButton => componentButton;
-            public UIScreenId UIScreenId => uIScreenId;
-        }
+        
+    }
+    [Serializable]
+    public struct MenuButtons
+    {
+        [SerializeField] private Button componentButton;
+        [SerializeField] private UIScreenId uIScreenId;
+        
+        public Button ComponentButton => componentButton;
+        public MenuButton MenuButtonComponent => componentButton != null
+            ? componentButton.GetComponent<MenuButton>()
+            : null;
+        public UIScreenId UIScreenId => uIScreenId;
     }
 }

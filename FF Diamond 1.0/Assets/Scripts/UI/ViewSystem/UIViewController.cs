@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.ViewSystem
 {
@@ -21,6 +22,9 @@ namespace UI.ViewSystem
 
         [Header("Header UI")]
         [SerializeField] private TMP_Text headerLabel;
+        
+        [Header("Back To Menu Button")]
+        [SerializeField] private Button backToMenuButton;
 
         private readonly Dictionary<UIScreenId, UIView> _screenLookup = new();
         private readonly Dictionary<UIScreenId, string> _screenTitles = new();
@@ -30,6 +34,7 @@ namespace UI.ViewSystem
         private void Awake()
         {
             EnsureInitialized();
+            backToMenuButton.onClick.AddListener(() => ShowScreen(UIScreenId.MenuScreen));
         }
 
         public void ShowScreen(UIScreenId id)
@@ -116,14 +121,14 @@ namespace UI.ViewSystem
             if (_initialized)
                 return;
 
-            BuildLookup(screens, _screenLookup);
+            BuildLookup(screens);
             BuildLookup(popups, _popupLookup);
             _initialized = true;
         }
 
-        private void BuildLookup(List<ScreenBinding> source, Dictionary<UIScreenId, UIView> target)
+        private void BuildLookup(List<ScreenBinding> source)
         {
-            target.Clear();
+            _screenLookup.Clear();
             _screenTitles.Clear();
             foreach (var binding in source)
             {
@@ -134,13 +139,13 @@ namespace UI.ViewSystem
                     continue;
                 }
 
-                if (target.ContainsKey(binding.Id))
+                if (_screenLookup.ContainsKey(binding.Id))
                 {
                     Debug.LogWarning($"Screen {binding.Id} is registered more than once. Only the first reference will be used.", binding.View);
                     continue;
                 }
 
-                target.Add(binding.Id, view);
+                _screenLookup.Add(binding.Id, view);
                 _screenTitles[binding.Id] = binding.Title;
             }
         }

@@ -13,32 +13,33 @@ namespace Data
         public sealed class Question : IData
         {
             public string question;
-            public Answer[] aVariantOfTheAnswers;
+            public Answer[] answers;
 
             public sealed class Answer : IData
             {
-                public string variant;
-                public bool isRight;
+                public string aVariantOfTheAnswers;
+                public bool answer;
 
                 public static Answer Parse(JObject j) =>
                     Map(j, new Dictionary<string, Action<Answer, JToken>>
                     {
-                        { "variant", (o,v) => o.variant = AsString(v) },
-                        { "isRight", (o,v) => o.isRight = AsBool(v)  },
+                        { "4hlgdfg", (o,v) => o.aVariantOfTheAnswers = AsString(v) },
+                        { "isRight", (o,v) => o.answer = AsBool(v)  },
                     });
             }
 
             public static Question Parse(JObject j) =>
                 Map(j, new Dictionary<string, Action<Question, JToken>>
                 {
-                    { "question", (o,v) => o.question = AsString(v) },
-                    { "aVariantOfTheAnswers", (o,v) =>
-                        o.aVariantOfTheAnswers = MapArray(v, o2 => Answer.Parse(o2)).ToArray() },
+                    { "45gf423", (o,v) => o.question = AsString(v) },
+                    { "354gdf5", (o,v) =>
+                        o.answers = MapArray(v, o2 => Answer.Parse(o2)).ToArray() },
                 });
         }
 
         public sealed class Results : IData
         {
+            public string score;
             public string name;
             public string desc;
             public string image;
@@ -46,9 +47,10 @@ namespace Data
             public static Results Parse(JObject j) =>
                 Map(j, new Dictionary<string, Action<Results, JToken>>
                 {
-                    { "name",  (o,v) => o.name  = AsString(v) },
-                    { "desc",  (o,v) => o.desc  = AsString(v) },
-                    { "image", (o,v) => o.image = AsString(v) },
+                    { "gjdfk",  (o,v) => o.score  = AsString(v) },
+                    { "68hjhg",  (o,v) => o.name  = AsString(v) },
+                    { "57jghj",  (o,v) => o.desc  = AsString(v) },
+                    { "6hfghf", (o,v) => o.image = AsString(v) },
                 });
         }
 

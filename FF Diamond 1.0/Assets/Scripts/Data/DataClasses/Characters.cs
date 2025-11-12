@@ -23,10 +23,10 @@ namespace Data
             public static Biography Parse(JObject j) =>
                 Map(j, new Dictionary<string, Action<Biography, JToken>>
                 {
-                    { "gender",   (o,v) => o.gender   = AsString(v) },
-                    { "age",      (o,v) => o.age      = AsInt(v) },
-                    { "birthday", (o,v) => o.birthday = AsString(v) },
-                    { "story",    (o,v) => o.story    = AsString(v) },
+                    { "24gdfg",   (o,v) => o.gender   = AsString(v) },
+                    { "234fdf",      (o,v) => o.age      = AsInt(v) },
+                    { "765hhgfh", (o,v) => o.birthday = AsString(v) },
+                    { "45khgh",    (o,v) => o.story    = AsString(v) },
                 });
         }
 
@@ -38,19 +38,19 @@ namespace Data
             public static Skill Parse(JObject j) =>
                 Map(j, new Dictionary<string, Action<Skill, JToken>>
                 {
-                    { "skillName", (o,v) => o.skillName = AsString(v) },
-                    { "skillDesc", (o,v) => o.skillDesc = AsString(v) },
+                    { "5hgfh", (o,v) => o.skillName = AsString(v) },
+                    { "5ghfdh", (o,v) => o.skillDesc = AsString(v) },
                 });
         }
 
         public static Characters Parse(JObject j) =>
             Map(j, new Dictionary<string, Action<Characters, JToken>>
             {
-                { "tagline",  (o,v) => o.tagline = AsString(v) },
-                { "name",     (o,v) => o.name    = AsString(v) },
+                { "hjjkhjmh",  (o,v) => o.tagline = AsString(v) },
+                { "67mgnm",     (o,v) => o.name    = AsString(v) },
                 { "image",    (o,v) => o.image   = AsString(v) },
-                { "skill",    (o,v) => o.skill   = Skill.Parse((JObject)v) },
-                { "biography",(o,v) => o.biography = Biography.Parse((JObject)v) },
+                { "67jghfhdg",    (o,v) => o.skill   = Skill.Parse((JObject)v) },
+                { "5hfghh6",(o,v) => o.biography = Biography.Parse((JObject)v) },
             });
     }
 }
