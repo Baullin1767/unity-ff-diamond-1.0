@@ -25,6 +25,8 @@ namespace Data
                     return $"{GetBasePath(DataType.Pets)}/{baseFileName}";
                 case DataType.Quiz:
                     return $"{GetBasePath(DataType.Quiz)}/{baseFileName}";
+                case DataType.Characters:
+                    return $"{GetBasePath(DataType.Characters)}/{baseFileName}";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(dataType), dataType, null);
             }
@@ -47,6 +49,8 @@ namespace Data
                     return $"{baseFolder}/VSDSFE";
                 case DataType.Quiz:
                     return $"{baseFolder}/34gdfS";
+                case DataType.Characters:
+                    return $"{baseFolder}/FSDVDWS";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(dataType), dataType, null);
             }

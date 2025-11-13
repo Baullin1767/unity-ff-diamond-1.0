@@ -48,7 +48,7 @@ namespace Data
             {
                 { "hjjkhjmh",  (o,v) => o.tagline = AsString(v) },
                 { "67mgnm",     (o,v) => o.name    = AsString(v) },
-                { "image",    (o,v) => o.image   = AsString(v) },
+                { "6gjghgfg",    (o,v) => o.image   = AsString(v) },
                 { "67jghfhdg",    (o,v) => o.skill   = Skill.Parse((JObject)v) },
                 { "5hfghh6",(o,v) => o.biography = Biography.Parse((JObject)v) },
             });

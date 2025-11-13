@@ -50,21 +50,33 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - eb04d7d144d43274984d127c9a8442b8: 21300000
+    - 3820f9129a9e76f4d9a6083005701b25: 21300000
     - 5cc4ceb2570b5ec49b62ac46200e2136: 21300000
     - 33317c8541c32724a9bb0373a7ab174f: 21300000
     - 1fbfa7d5da4abeb47b7e8a7da67ff278: 21300000
     - 365fb8db74651ec41973d978f39f0d97: 21300000
+    - b0eb2bece33a4ff49a36828900e9a062: 21300000
+    - 30e2c36dcac3a744dab2a8f135afbaf6: -1801269802
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: eb04d7d144d43274984d127c9a8442b8, type: 3}
+  - {fileID: 21300000, guid: 3820f9129a9e76f4d9a6083005701b25, type: 3}
   - {fileID: 21300000, guid: 5cc4ceb2570b5ec49b62ac46200e2136, type: 3}
   - {fileID: 21300000, guid: 33317c8541c32724a9bb0373a7ab174f, type: 3}
   - {fileID: 21300000, guid: 1fbfa7d5da4abeb47b7e8a7da67ff278, type: 3}
   - {fileID: 21300000, guid: 365fb8db74651ec41973d978f39f0d97, type: 3}
+  - {fileID: 21300000, guid: b0eb2bece33a4ff49a36828900e9a062, type: 3}
+  - {fileID: -1801269802, guid: 30e2c36dcac3a744dab2a8f135afbaf6, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Frame 91
+  - Frame 59
   - Frame 53
   - Frame 90
   - Frame 54
   - Frame 89
+  - Group 1
+  - Frame 58_0
   m_RenderDataMap: {}
   m_Tag: MIniGamesAtlas
   m_IsVariant: 0

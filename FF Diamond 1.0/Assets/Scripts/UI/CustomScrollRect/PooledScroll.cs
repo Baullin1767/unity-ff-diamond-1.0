@@ -3,6 +3,7 @@ using System.Linq;
 using Data;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI.CustomScrollRect
 {
@@ -28,6 +29,7 @@ namespace UI.CustomScrollRect
         [SerializeField] private DataType dataType;
 
         private readonly List<BaseItemView> _pool = new();
+        [Inject] private DiContainer _container;
         private int _visibleCount;
         private int _firstIndex;
         private float _row;
@@ -50,7 +52,9 @@ namespace UI.CustomScrollRect
 
             for (int i = 0; i < _visibleCount; i++)
             {
-                var view = Instantiate(itemView, content);
+                var view = _container != null
+                    ? _container.InstantiatePrefabForComponent<BaseItemView>(itemView.gameObject, content)
+                    : Instantiate(itemView, content);
                 _pool.Add(view);
             }
 

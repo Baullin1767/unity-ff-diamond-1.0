@@ -6,7 +6,7 @@ namespace UI.CustomScrollRect.Items
 {
     public class RedeemCodesItemView : BaseItemView
     {
-        [SerializeField] protected Button button;
+        [SerializeField] private Button button;
         public override void Bind<T>(T data)
         {
             if (data is RedeemCodes redeemCodes)

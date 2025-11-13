@@ -14,7 +14,7 @@ namespace UI.CustomScrollRect.Items
             {
                 title.text = gameVehicles.title;
                 content.text = gameVehicles.desc;
-                image.sprite = image.sprite = await DataManager.GetSprite(
+                image.sprite = await DataManager.GetSprite(
                     $"{PathBuilder.GetBasePath(DataType.GameVehicles)}/{gameVehicles.image}");
             }
         }

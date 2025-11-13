@@ -28,7 +28,7 @@ namespace UI.ViewSystem
 
         private readonly Dictionary<UIScreenId, UIView> _screenLookup = new();
         private readonly Dictionary<UIScreenId, string> _screenTitles = new();
-        private readonly Dictionary<UIPopupId, UIView> _popupLookup = new();
+        private readonly Dictionary<UIPopupId, PopupUIView> _popupLookup = new();
         private bool _initialized;
 
         private void Awake()
@@ -59,7 +59,7 @@ namespace UI.ViewSystem
             UpdateHeader(id);
         }
 
-        public void ShowPopup(UIPopupId id)
+        public void ShowPopup(UIPopupId id, int reward, string result = "")
         {
             EnsureInitialized();
 
@@ -75,7 +75,7 @@ namespace UI.ViewSystem
                     pair.Value.Hide();
             }
 
-            target.Show();
+            target.Show(reward, result);
         }
 
         public void HidePopup(UIPopupId id)
@@ -150,7 +150,7 @@ namespace UI.ViewSystem
             }
         }
 
-        private void BuildLookup(List<PopupBinding> source, Dictionary<UIPopupId, UIView> target)
+        private void BuildLookup(List<PopupBinding> source, Dictionary<UIPopupId, PopupUIView> target)
         {
             target.Clear();
             foreach (var binding in source)
@@ -188,10 +188,10 @@ namespace UI.ViewSystem
         private sealed class PopupBinding
         {
             [SerializeField] private UIPopupId id;
-            [SerializeField] private UIView view;
+            [SerializeField] private PopupUIView view;
 
             public UIPopupId Id => id;
-            public UIView View => view;
+            public PopupUIView View => view;
         }
     }
 }
