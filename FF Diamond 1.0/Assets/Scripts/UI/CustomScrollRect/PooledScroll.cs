@@ -88,6 +88,9 @@ namespace UI.CustomScrollRect
                     rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, top, itemHeight);
                     rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, content.rect.width);
 
+                    if (view is IIndexedScrollItem indexed)
+                        indexed.SetDataIndex(dataIndex);
+
                     view.Bind(_data[dataIndex]);
                 }
                 else

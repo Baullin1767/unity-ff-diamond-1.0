@@ -22,7 +22,7 @@ namespace UI.Minigames.WheelFortune
         private IMinigameCurrencyService _currencyService;
         
         [Inject] 
-        private UIViewController _viewController;
+        private IUIViewController _viewController;
         
         private void Awake()
         {

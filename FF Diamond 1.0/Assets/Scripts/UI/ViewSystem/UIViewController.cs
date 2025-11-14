@@ -59,7 +59,7 @@ namespace UI.ViewSystem
             UpdateHeader(id);
         }
 
-        public void ShowPopup(UIPopupId id, int reward, string result = "")
+        public void ShowPopup(UIPopupId id, float reward, string result = "")
         {
             EnsureInitialized();
 

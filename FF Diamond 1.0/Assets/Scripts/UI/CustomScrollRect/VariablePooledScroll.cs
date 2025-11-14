@@ -135,6 +135,9 @@ namespace UI.CustomScrollRect
 
                     ConfigureRectTransform((RectTransform)view.transform, dataIndex);
 
+                    if (view is IIndexedScrollItem indexed)
+                        indexed.SetDataIndex(dataIndex);
+
                     if (view is IVariableScrollItem variable)
                     {
                         variable.ApplyHeight(_itemHeights[dataIndex]);

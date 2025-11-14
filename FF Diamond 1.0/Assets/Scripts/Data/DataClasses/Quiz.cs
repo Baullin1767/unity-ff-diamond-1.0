@@ -24,7 +24,7 @@ namespace Data
                     Map(j, new Dictionary<string, Action<Answer, JToken>>
                     {
                         { "4hlgdfg", (o,v) => o.aVariantOfTheAnswers = AsString(v) },
-                        { "isRight", (o,v) => o.answer = AsBool(v)  },
+                        { "2ddf", (o,v) => o.answer = AsBool(v)  },
                     });
             }
 

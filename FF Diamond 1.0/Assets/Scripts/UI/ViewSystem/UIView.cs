@@ -12,7 +12,7 @@ namespace UI.ViewSystem
     }
     public abstract class PopupUIView : MonoBehaviour
     {
-        public abstract void Show(int reward, string result);
+        public abstract void Show(float reward, string result);
         public abstract void Hide();
     }
 }

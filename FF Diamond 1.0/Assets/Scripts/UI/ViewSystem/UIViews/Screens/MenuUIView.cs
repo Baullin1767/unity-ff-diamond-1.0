@@ -24,6 +24,7 @@ namespace UI.ViewSystem.UIViews
                 cachedButton.ComponentButton.onClick.AddListener(
                     () => HandleMenuButtonClick(cachedButton));
             }
+
         }
 
         private void HandleMenuButtonClick(MenuButtons clickedButton)
@@ -58,8 +59,7 @@ namespace UI.ViewSystem.UIViews
             titleMenu.SetActive(false);
             baseMenu.SetActive(false);
         }
-        
-        
+
     }
     [Serializable]
     public struct MenuButtons

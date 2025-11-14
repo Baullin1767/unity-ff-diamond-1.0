@@ -95,6 +95,7 @@ MonoBehaviour:
   title: {fileID: 5875049101385670239}
   desc: {fileID: 4182034019874173541}
   image: {fileID: 2899755052145286955}
+  imageLoader: {fileID: 8315616948888082206}
   imageType: {fileID: 7900558302003897892}
   type: 0
 --- !u!1 &1172202643153156241
@@ -472,8 +473,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4591354146449750398}
   - {fileID: 5887859703318910702}
+  - {fileID: 4591354146449750398}
   m_Father: {fileID: 7757121134696641328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -567,6 +568,7 @@ GameObject:
   - component: {fileID: 5887859703318910702}
   - component: {fileID: 4325992098061810588}
   - component: {fileID: 6655214872369652137}
+  - component: {fileID: 2802982950577087458}
   m_Layer: 0
   m_Name: Loader
   m_TagString: Untagged
@@ -631,3 +633,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &2802982950577087458
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315616948888082206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e37fa846efb48a14697a5dde0481f7df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

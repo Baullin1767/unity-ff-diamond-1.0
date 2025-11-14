@@ -50,17 +50,23 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 9a4c90c031775964ebdf4a2cffec4ff4: 21300000
+    - 7f101471a584b9f4e83141ab624be628: 21300000
     - 1febb1d5a44c4ce4ab21348fe019e082: 21300000
     - db2c8806d8e0de444abd4bc3c270cb13: 21300000
     - 4d3c273aee61328409b4a127d3c10e9c: 21300000
     - 4daa635da8ce50c48a8b5a0b0a694c86: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 9a4c90c031775964ebdf4a2cffec4ff4, type: 3}
+  - {fileID: 21300000, guid: 7f101471a584b9f4e83141ab624be628, type: 3}
   - {fileID: 21300000, guid: 1febb1d5a44c4ce4ab21348fe019e082, type: 3}
   - {fileID: 21300000, guid: db2c8806d8e0de444abd4bc3c270cb13, type: 3}
   - {fileID: 21300000, guid: 4d3c273aee61328409b4a127d3c10e9c, type: 3}
   - {fileID: 21300000, guid: 4daa635da8ce50c48a8b5a0b0a694c86, type: 3}
   m_PackedSpriteNamesToIndex:
+  - conestionErrorImage
+  - Rectangle 14
   - Bubble Coin - Sprite
   - Icon
   - Button Rectangle

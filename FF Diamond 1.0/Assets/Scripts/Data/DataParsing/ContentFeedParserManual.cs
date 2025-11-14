@@ -41,5 +41,45 @@ namespace Data
 
             return MapArray(current, parseOne);
         }
+
+        public static T ParseObject<T>(string json, string parentProperty, string childProperty, Func<JObject, T> parseOne)
+        {
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                Debug.LogWarning("Attempted to parse empty json.");
+                return default;
+            }
+
+            var root = JToken.Parse(json);
+            JToken current = root;
+
+            if (!string.IsNullOrWhiteSpace(parentProperty))
+            {
+                current = (current as JObject)?[parentProperty];
+                if (current == null)
+                {
+                    Debug.LogWarning($"JSON path segment '{parentProperty}' was not found.");
+                    return default;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(childProperty))
+            {
+                current = (current as JObject)?[childProperty];
+                if (current == null)
+                {
+                    Debug.LogWarning($"JSON path segment '{childProperty}' was not found.");
+                    return default;
+                }
+            }
+
+            if (current is not JObject obj)
+            {
+                Debug.LogWarning("Expected JSON object at the resolved path but found a different token type.");
+                return default;
+            }
+
+            return parseOne(obj);
+        }
     }
 }

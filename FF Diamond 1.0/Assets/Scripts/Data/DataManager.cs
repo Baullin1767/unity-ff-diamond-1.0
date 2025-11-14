@@ -26,8 +26,11 @@ namespace Data
                 ParseArray(j, "43gdfgdg", "Game Weapons", GameWeapons.Parse).ToArray(),
             [DataType.Pets] = j => 
                 ParseArray(j, "45hfgh", "Pets", Pets.Parse).ToArray(),
-            [DataType.Quiz] = j => 
-                ParseArray(j, "54hhbf43g", "", Quiz.Parse).ToArray(),
+            [DataType.Quiz] = j =>
+            {
+                var quiz = ParseObject(j, "54hhbf43g", "", Quiz.Parse);
+                return quiz != null ? new IData[] { quiz } : Array.Empty<IData>();
+            },
             [DataType.Characters] = j => 
                 ParseArray(j, "7rytryty", "Characters", Characters.Parse).ToArray(),
         };
