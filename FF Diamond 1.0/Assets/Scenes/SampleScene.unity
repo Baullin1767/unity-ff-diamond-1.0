@@ -14199,7 +14199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1379498751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14953,7 +14953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1420419904
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18571,10 +18571,16 @@ MonoBehaviour:
   icon: {fileID: 1875599308}
   iconCanvasGroup: {fileID: 0}
   showDuration: 0.45
-  holdDuration: 0.35
+  prePulseDelay: 0.12
   pulseDuration: 0.3
+  postPulseDelay: 0.25
   hideDuration: 0.45
   pulseScale: 1.12
+  showEase: 4
+  hideEase: 4
+  fadeInEase: 4
+  fadeOutEase: 4
+  pulseEase: 4
 --- !u!1 &1880184682
 GameObject:
   m_ObjectHideFlags: 0
