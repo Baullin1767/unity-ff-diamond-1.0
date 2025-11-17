@@ -98,6 +98,12 @@ MonoBehaviour:
   imageLoader: {fileID: 8315616948888082206}
   imageType: {fileID: 7900558302003897892}
   type: 0
+  typeSprites:
+  - {fileID: 21300000, guid: fc508f5cc41c7394c9e0aab8c0f17af2, type: 3}
+  - {fileID: 21300000, guid: e2e8adb7438529a40881aa7d35e2ff08, type: 3}
+  - {fileID: 21300000, guid: e977a965214bfaf47b53f89cbb008110, type: 3}
+  - {fileID: 21300000, guid: 3bf4af1dc93e9da4a97834468c5bc4d1, type: 3}
+  - {fileID: 21300000, guid: 4ed0ce763039f884a90fcb2dc517ad1e, type: 3}
 --- !u!1 &1172202643153156241
 GameObject:
   m_ObjectHideFlags: 0

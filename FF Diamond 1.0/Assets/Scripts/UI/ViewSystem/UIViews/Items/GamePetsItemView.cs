@@ -3,10 +3,11 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Data;
 using TMPro;
+using UI.CustomScrollRect;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.CustomScrollRect.Items
+namespace UI.ViewSystem.UIViews.Items
 {
     public class GamePetsItemView : BaseItemView
     {
@@ -15,6 +16,7 @@ namespace UI.CustomScrollRect.Items
         [SerializeField] private GameObject imageLoader;
         [SerializeField] private Image imageType;
         [SerializeField] private PetsType type;
+        [SerializeField] private Sprite[] typeSprites;
 
         private CancellationTokenSource _imageLoadCts;
         private string _pendingImagePath;
@@ -29,6 +31,7 @@ namespace UI.CustomScrollRect.Items
             title.text = petsData.title;
             desc.text = petsData.desc;
             Enum.TryParse(petsData.type, out type);
+            imageType.sprite = typeSprites[(int)type];
 
             _pendingImagePath = $"{PathBuilder.GetBasePath(DataType.Pets)}/{petsData.image}";
             BeginImageLoad(_pendingImagePath);
