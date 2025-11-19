@@ -1,5 +1,9 @@
 using UnityEngine;
 
+#if UNITY_IOS
+using UnityEngine.iOS;
+#endif
+
 namespace Core
 {
     public class IpadChecker : MonoBehaviour
