@@ -25,8 +25,7 @@ namespace Editor
         {
             var buildPlayerOptions = new BuildPlayerOptions
             {
-                scenes = new[] { "Assets/Scenes/MainScene.unity" } // Здесь укажите название вашей основной сцены в проекте - Если сцен много, укажите их как на примере ниже
-                                                                   //scenes = new[] { "Assets/Scenes/MainScene.unity", "Assets/Scenes/SecondaryScene.unit”} //Указание происходит в массиве, через запятую
+                scenes = new[] { "Assets/Scenes/MainScene.unity" } 
             };
 
             var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);

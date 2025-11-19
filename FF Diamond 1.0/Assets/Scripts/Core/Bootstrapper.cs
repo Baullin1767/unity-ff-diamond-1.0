@@ -9,7 +9,6 @@ using UnityEngine;
 using UnityEngine.Video;
 using UI.ViewSystem;
 using UI.ViewSystem.UIViews.Popups;
-using UnityEngine.iOS;
 using Zenject;
 using DataType = Data.DataType;
 using PathBuilder = Data.PathBuilder;
@@ -60,7 +59,6 @@ namespace Core
                 Destroy(Ipad);
             }
             
-            StatusBarManager.Show(true);
             if (!connectionErrorPopup)
                 connectionErrorPopup = FindObjectOfType<ConnectionErrorPopupUIView>(includeInactive: true);
 
@@ -280,8 +278,9 @@ namespace Core
         {
 #if UNITY_EDITOR
             return hasInternetConnection;
-#endif
+#else
             return Application.internetReachability != NetworkReachability.NotReachable;
+#endif
         }
 
         private void UpdateLoadingProgress(float progress)
