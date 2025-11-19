@@ -35,8 +35,16 @@ namespace Data
                 ParseArray(j, "7rytryty", "Characters", Characters.Parse).ToArray(),
         };
 
+        private const string StorePriceListResourcePath = "StorePriceList";
+
+        private static IData[] _storeItemsCache;
+        private static StorePriceList _storePriceList;
+
         public static async UniTask<IData[]> GetItemsData(DataType dataType, CancellationToken ct = default)
         {
+            if (dataType == DataType.Store)
+                return GetStoreItemsFromScriptableObject();
+
             if (!Parsers.TryGetValue(dataType, out var parse))
                 throw new ArgumentOutOfRangeException(nameof(dataType), dataType, null);
 
@@ -141,6 +149,57 @@ namespace Data
             sanitized = sanitized.Replace('/', Path.DirectorySeparatorChar);
             sanitized = sanitized.TrimStart(Path.DirectorySeparatorChar);
             return Path.Combine(SpriteCacheRoot, sanitized);
+        }
+
+        private static IData[] GetStoreItemsFromScriptableObject()
+        {
+            if (_storeItemsCache != null)
+                return _storeItemsCache;
+
+            var asset = LoadStorePriceList();
+            if (asset == null)
+            {
+                _storeItemsCache = Array.Empty<IData>();
+                return _storeItemsCache;
+            }
+
+            var prices = asset.Prices;
+            if (prices == null || prices.Count == 0)
+            {
+                _storeItemsCache = Array.Empty<IData>();
+                return _storeItemsCache;
+            }
+
+            var items = new Store[prices.Count];
+            for (int i = 0; i < prices.Count; i++)
+            {
+                var price = Mathf.Max(0, prices[i]);
+                items[i] = new Store { price = price };
+            }
+
+            _storeItemsCache = items;
+            return _storeItemsCache;
+        }
+
+        private static StorePriceList LoadStorePriceList()
+        {
+            if (_storePriceList != null)
+                return _storePriceList;
+
+            if (!string.IsNullOrWhiteSpace(StorePriceListResourcePath))
+                _storePriceList = Resources.Load<StorePriceList>(StorePriceListResourcePath);
+
+            if (_storePriceList == null)
+            {
+                var allAssets = Resources.LoadAll<StorePriceList>(string.Empty);
+                if (allAssets != null && allAssets.Length > 0)
+                    _storePriceList = allAssets[0];
+            }
+
+            if (_storePriceList == null)
+                Debug.LogWarning($"Store price list asset not found at Resources/{StorePriceListResourcePath}. Store data will be empty.");
+
+            return _storePriceList;
         }
     }
 }

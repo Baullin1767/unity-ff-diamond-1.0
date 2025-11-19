@@ -1,5 +1,7 @@
 using System;
 using DG.Tweening;
+using UI.Minigames.Currency;
+using UI.ViewSystem;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +21,7 @@ namespace UI.Minigames.WheelFortune
         [Range(0.05f, 0.95f)]
         [SerializeField] private float maxNormalizedLandingPoint = 0.8f;
 
+        private IUIViewController _viewController;
         private IWheelFortuneConfig _config;
         private Tween _spinTween;
         private bool _isInitialized;
@@ -27,13 +30,14 @@ namespace UI.Minigames.WheelFortune
         public bool IsSpinning => _spinTween != null && _spinTween.IsActive() && _spinTween.IsPlaying();
 
         [Inject]
-        private void Construct(IWheelFortuneConfig config)
+        private void Construct(IWheelFortuneConfig config, IUIViewController viewController)
         {
+            _viewController = viewController;
             _config = config;
             _isInitialized = true;
         }
 
-        public bool TrySpin()
+        public bool TrySpin(IMinigameCurrencyService currencyService)
         {
             if (!_isInitialized)
             {
@@ -55,6 +59,12 @@ namespace UI.Minigames.WheelFortune
 
             if (IsSpinning)
                 return false;
+
+            if (!currencyService.TrySpend(_config.SpinCost))
+            {
+                _viewController.ShowPopup(UIPopupId.PurchaseInsufficient, _config.SpinCost);
+                return false;
+            }
 
             var winningSegment = _config.GetRandomSegment(out var segmentIndex);
             var segmentAngle = 360f / _config.Segments.Count;

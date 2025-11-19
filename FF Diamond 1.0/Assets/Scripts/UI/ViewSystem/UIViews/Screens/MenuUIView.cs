@@ -16,6 +16,8 @@ namespace UI.ViewSystem.UIViews
         [Inject] 
         private IUIViewController _viewController;
 
+        private bool _isFirst = true;
+
         private void Start()
         {
             foreach (var menuButton in buttons)
@@ -50,8 +52,9 @@ namespace UI.ViewSystem.UIViews
 
         public override void Show()
         {
-            titleMenu.SetActive(true);
+            titleMenu.SetActive(_isFirst);
             baseMenu.SetActive(true);
+            _isFirst = false;
         }
 
         public override void Hide()

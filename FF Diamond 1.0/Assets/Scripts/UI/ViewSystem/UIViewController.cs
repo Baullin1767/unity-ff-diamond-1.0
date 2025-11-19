@@ -25,6 +25,8 @@ namespace UI.ViewSystem
         
         [Header("Back To Menu Button")]
         [SerializeField] private Button backToMenuButton;
+        [Header("Do To Store Button")]
+        [SerializeField] private Button[] doToStoreButton;
 
         private readonly Dictionary<UIScreenId, UIView> _screenLookup = new();
         private readonly Dictionary<UIScreenId, string> _screenTitles = new();
@@ -34,7 +36,10 @@ namespace UI.ViewSystem
         private void Awake()
         {
             EnsureInitialized();
+            
             backToMenuButton.onClick.AddListener(() => ShowScreen(UIScreenId.MenuScreen));
+            foreach (var button in doToStoreButton)
+                button.onClick.AddListener(() => ShowScreen(UIScreenId.StoreScreen));
         }
 
         public void ShowScreen(UIScreenId id)

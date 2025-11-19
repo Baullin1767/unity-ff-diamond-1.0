@@ -55,6 +55,7 @@ namespace UI.CustomScrollRect
                 var view = _container != null
                     ? _container.InstantiatePrefabForComponent<BaseItemView>(itemView.gameObject, content)
                     : Instantiate(itemView, content);
+                
                 _pool.Add(view);
             }
 

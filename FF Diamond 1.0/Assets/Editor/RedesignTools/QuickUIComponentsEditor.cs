@@ -38,6 +38,7 @@ namespace Editor
                 v.AddComponent<RectTransform>();
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 v.transform.localScale = Vector3.one;
+                v.transform.position = Vector3.zero;
                 Selection.activeGameObject = v;
             });
             DrawButton("Create Image", () =>
@@ -47,6 +48,7 @@ namespace Editor
                 v.AddComponent<RectTransform>();
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 v.transform.localScale = Vector3.one;
+                v.transform.position = Vector3.zero;
                 v.AddComponent<Image>();
                 Selection.activeGameObject = v;
             });
@@ -57,6 +59,7 @@ namespace Editor
                 v.AddComponent<RectTransform>();
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 v.transform.localScale = Vector3.one;
+                v.transform.position = Vector3.zero;
                 v.AddComponent<TextMeshProUGUI>();
                 Selection.activeGameObject = v;
             });
@@ -68,6 +71,7 @@ namespace Editor
                 v.AddComponent<RectTransform>();
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 v.transform.localScale = Vector3.one;
+                v.transform.position = Vector3.zero;
                 v.AddComponent<Button>();
                 Selection.activeGameObject = v;
             });
@@ -79,6 +83,7 @@ namespace Editor
                 v.AddComponent<RectTransform>();
                 v.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 v.transform.localScale = Vector3.one;
+                v.transform.position = Vector3.zero;
                 v.AddComponent<Toggle>();
                 Selection.activeGameObject = v;
             });

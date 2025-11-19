@@ -47,7 +47,7 @@ namespace UI.Minigames.WheelFortune
             if (spinner == null)
                 return;
 
-            if (spinner.TrySpin())
+            if (spinner.TrySpin(_currencyService))
             {
                 if (spinButton)
                     spinButton.interactable = false;

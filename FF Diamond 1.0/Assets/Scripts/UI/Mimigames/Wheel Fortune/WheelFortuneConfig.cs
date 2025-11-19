@@ -12,6 +12,7 @@ namespace UI.Minigames.WheelFortune
         Vector2Int FullSpinsRange { get; }
         Vector2 DurationRange { get; }
         Ease SpinEase { get; }
+        int SpinCost { get; }
         WheelFortuneSegment GetRandomSegment(out int segmentIndex);
     }
 
@@ -25,11 +26,12 @@ namespace UI.Minigames.WheelFortune
         [SerializeField] private Vector2Int fullSpinsRange = new(3, 6);
         [SerializeField] private Vector2 durationRange = new(2.5f, 4.5f);
         [SerializeField] private Ease spinEase = Ease.OutQuart;
-
+        [SerializeField] private int spinCost = 100;
         public IReadOnlyList<WheelFortuneSegment> Segments => segments;
         public Vector2Int FullSpinsRange => fullSpinsRange;
         public Vector2 DurationRange => durationRange;
         public Ease SpinEase => spinEase;
+        public int SpinCost => spinCost;
 
         public override void InstallBindings()
         {

@@ -17,13 +17,16 @@ namespace UI.ViewSystem
         FreeDiamondScreen,
         FFCalculatorScreen,
         TipsAndTricksScreen,
-        RedeemCodesScreen
+        RedeemCodesScreen,
+        StoreScreen
     }
 
     public enum UIPopupId
     {
         ConnectionError,
         PurchaseCost,
+        PurchaseSuccess,
+        PurchaseInsufficient,
         Win,
         QuizResults
     }

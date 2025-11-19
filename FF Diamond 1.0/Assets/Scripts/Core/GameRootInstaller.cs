@@ -1,4 +1,5 @@
 using System;
+using Core;
 using UnityEngine;
 using Zenject;
 
@@ -10,17 +11,20 @@ namespace UI.ViewSystem
     /// </summary>
     public sealed class GameRootInstaller : MonoInstaller
     {
-        [SerializeField] private UIViewController viewController;
+        [SerializeField] private IpadChecker ipadChecker;
+        [SerializeField] private UIViewController viewControllerIphone;
+        [SerializeField] private UIViewController viewControllerIpad;
+        private UIViewController _viewController;
+
+        private void Awake()
+        {
+            ipadChecker ??= FindAnyObjectByType<IpadChecker>();
+        }
 
         public override void InstallBindings()
         {
-            if (!viewController)
-                viewController = FindObjectOfType<UIViewController>(includeInactive: true);
-
-            if (!viewController)
-                throw new InvalidOperationException($"No {nameof(UIViewController)} assigned to {nameof(GameRootInstaller)}.");
-
-            UIViewInstaller.Install(Container, viewController);
+            UIViewInstaller.Install(Container, 
+                ipadChecker.IsIPad() ? viewControllerIpad : viewControllerIphone);
         }
     }
 }

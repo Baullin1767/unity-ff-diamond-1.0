@@ -12,6 +12,7 @@ namespace Data
         public string image;
         public Skill skill;
         public Biography biography;
+        public bool IsPaid;
 
         public sealed class Biography : IData
         {
@@ -43,14 +44,20 @@ namespace Data
                 });
         }
 
-        public static Characters Parse(JObject j) =>
-            Map(j, new Dictionary<string, Action<Characters, JToken>>
+        public static Characters Parse(JObject j)
+        {
+            var character = Map(j, new Dictionary<string, Action<Characters, JToken>>
             {
                 { "hjjkhjmh",  (o,v) => o.tagline = AsString(v) },
                 { "67mgnm",     (o,v) => o.name    = AsString(v) },
                 { "6gjghgfg",    (o,v) => o.image   = AsString(v) },
                 { "67jghfhdg",    (o,v) => o.skill   = Skill.Parse((JObject)v) },
                 { "5hfghh6",(o,v) => o.biography = Biography.Parse((JObject)v) },
+                { "54ggfdhh",(o,v) => o.IsPaid = !(AsInt(v) == 1 || AsInt(v) == 0)},
             });
+
+            character.IsPaid = PurchaseStateStorage.GetCharacterIsPaid(character, character.IsPaid);
+            return character;
+        }
     }
 }

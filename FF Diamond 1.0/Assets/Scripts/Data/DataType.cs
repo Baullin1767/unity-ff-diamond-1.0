@@ -9,6 +9,7 @@ namespace Data
         GameWeapons,
         Pets,
         Quiz,
-        Characters
+        Characters,
+        Store
     }
 }

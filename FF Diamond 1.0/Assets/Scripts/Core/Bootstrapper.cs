@@ -6,8 +6,10 @@ using Cysharp.Threading.Tasks;
 using Plugins.Dropbox;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Video;
 using UI.ViewSystem;
 using UI.ViewSystem.UIViews.Popups;
+using UnityEngine.iOS;
 using Zenject;
 using DataType = Data.DataType;
 using PathBuilder = Data.PathBuilder;
@@ -16,15 +18,22 @@ namespace Core
 {
     public sealed class Bootstrapper : MonoBehaviour
     {
+        [Header("Platform")]
+        [SerializeField] private GameObject Iphone;
+        [SerializeField] private GameObject Ipad;
+        [Header("Preload Types")]
         [SerializeField] private DataType[] preloadTypes;
         [Header("UI Transition")]
         [SerializeField] private GameObject baseUIRoot;
         [SerializeField] private GameObject loadingUIRoot;
+        [SerializeField] private VideoPlayer loadingScreenVideo;
         [SerializeField] private TMP_Text loadingProgressLabel;
         [Header("Connection Handling")]
         [SerializeField] private ConnectionErrorPopupUIView connectionErrorPopup;
         [SerializeField] private UIViewController viewControllerReference;
         [SerializeField, Min(0.2f)] private float connectionCheckInterval = 2f;
+        [Header("IpadChecker")]
+        [SerializeField] private IpadChecker ipadChecker;
 #if UNITY_EDITOR
         [SerializeField] private bool hasInternetConnection = true;
 #endif
@@ -38,6 +47,20 @@ namespace Core
 
         private void Awake()
         {
+            ipadChecker ??= FindAnyObjectByType<IpadChecker>();
+            
+            if (ipadChecker.IsIPad())
+            {
+                Ipad.SetActive(true);
+                Destroy(Iphone);
+            }
+            else
+            {
+                Iphone.SetActive(true);
+                Destroy(Ipad);
+            }
+            
+            StatusBarManager.Show(true);
             if (!connectionErrorPopup)
                 connectionErrorPopup = FindObjectOfType<ConnectionErrorPopupUIView>(includeInactive: true);
 
@@ -46,6 +69,9 @@ namespace Core
 
             if (_viewController == null && viewControllerReference)
                 _viewController = viewControllerReference;
+
+            if (!loadingScreenVideo && loadingUIRoot)
+                loadingScreenVideo = loadingUIRoot.GetComponentInChildren<VideoPlayer>(true);
 
             if (connectionErrorPopup)
                 connectionErrorPopup.ActionRequested += HandleConnectionPopupAction;
@@ -198,6 +224,7 @@ namespace Core
                     _reconnectCompletionSource?.TrySetResult();
                     _reconnectCompletionSource = null;
                     _connectionLossPopupVisible = false;
+                    RestartLoadingScreenVideo();
                     break;
                 case ConnectionErrorPopupUIView.Mode.Accept:
                     _connectionLossPopupVisible = false;
@@ -265,6 +292,17 @@ namespace Core
             progress = Mathf.Clamp01(progress);
             var percent = Mathf.RoundToInt(progress * 100f);
             loadingProgressLabel.SetText("BUFFERING...{0}%", percent);
+        }
+
+        private void RestartLoadingScreenVideo()
+        {
+            if (!loadingScreenVideo)
+                return;
+
+            loadingScreenVideo.Stop();
+            if (loadingScreenVideo.canSetTime)
+                loadingScreenVideo.time = 0d;
+            loadingScreenVideo.Play();
         }
     }
 }
