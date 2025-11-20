@@ -36,7 +36,7 @@ namespace UI
                 && int.TryParse(inputField.text, out int currentValue))
             {
                 _viewController.ShowPopup(
-                    UIPopupId.PurchaseCost, currentValue * _currentCoefficient);
+                    UIPopupId.PurchaseCostCalc, currentValue * _currentCoefficient);
             }
             else
                 inputField.text = "Enter an integer";

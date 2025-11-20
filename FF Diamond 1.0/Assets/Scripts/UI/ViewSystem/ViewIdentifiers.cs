@@ -25,6 +25,7 @@ namespace UI.ViewSystem
     {
         ConnectionError,
         PurchaseCost,
+        PurchaseCostCalc,
         PurchaseSuccess,
         PurchaseInsufficient,
         Win,

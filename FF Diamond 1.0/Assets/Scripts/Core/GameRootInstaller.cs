@@ -16,13 +16,9 @@ namespace UI.ViewSystem
         [SerializeField] private UIViewController viewControllerIpad;
         private UIViewController _viewController;
 
-        private void Awake()
-        {
-            ipadChecker ??= FindAnyObjectByType<IpadChecker>();
-        }
-
         public override void InstallBindings()
         {
+            ipadChecker ??= FindAnyObjectByType<IpadChecker>();
             UIViewInstaller.Install(Container, 
                 ipadChecker.IsIPad() ? viewControllerIpad : viewControllerIphone);
         }

@@ -12,6 +12,7 @@ namespace UI.ViewSystem.UIViews.Popups
     /// </summary>
     public sealed class PurchaseCostPopupUIView : PopupUIView
     {
+        [SerializeField] private bool isCalc;
         [Header("Root")]
         [SerializeField] private GameObject popupRoot;
 
@@ -37,6 +38,11 @@ namespace UI.ViewSystem.UIViews.Popups
 
         private void Awake()
         {
+            if (isCalc)
+            {
+                closeButton = buyButton;
+                buyButton = null;
+            }
             if (buyButton)
                 buyButton.onClick.AddListener(HandleBuyClicked);
             if (closeButton)

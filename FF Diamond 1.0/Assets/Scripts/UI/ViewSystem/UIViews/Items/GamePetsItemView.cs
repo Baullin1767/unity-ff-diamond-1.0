@@ -21,6 +21,11 @@ namespace UI.ViewSystem.UIViews.Items
         private CancellationTokenSource _imageLoadCts;
         private string _pendingImagePath;
 
+        private void Awake()
+        {
+            image.color = new Color(1, 1, 1, 0);
+        }
+
         public override void Bind<T>(T data)
         {
             ResetImage();

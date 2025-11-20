@@ -173,7 +173,7 @@ namespace Data
             var items = new Store[prices.Count];
             for (int i = 0; i < prices.Count; i++)
             {
-                var price = Mathf.Max(0, prices[i]);
+                var price = prices[i];
                 items[i] = new Store { price = price };
             }
 

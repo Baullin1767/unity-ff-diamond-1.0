@@ -47,7 +47,10 @@ namespace UI.CustomScrollRect.Items
         public override void Bind<T>(T data)
         {
             if (button)
+            {
                 button.onClick.RemoveAllListeners();
+                button.image.sprite = button.spriteState.highlightedSprite;
+            }
             if (byeButton)
                 byeButton.onClick.RemoveListener(OpenPurchasePopup);
 
@@ -59,7 +62,10 @@ namespace UI.CustomScrollRect.Items
                     title.text = redeemCodes.code;
 
                 if (button)
-                    button.onClick.AddListener(() => GUIUtility.systemCopyBuffer = redeemCodes.code);
+                    button.onClick.AddListener(() =>
+                    {
+                        GUIUtility.systemCopyBuffer = redeemCodes.code;
+                    });
 
                 _purchaseContext = BuildPurchaseContext(redeemCodes);
                 bool isPaid = redeemCodes.isPaid;

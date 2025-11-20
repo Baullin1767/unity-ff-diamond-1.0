@@ -41,7 +41,6 @@ namespace UI.ViewSystem
             foreach (var button in doToStoreButton)
                 button.onClick.AddListener(() => ShowScreen(UIScreenId.StoreScreen));
         }
-
         public void ShowScreen(UIScreenId id)
         {
             EnsureInitialized();

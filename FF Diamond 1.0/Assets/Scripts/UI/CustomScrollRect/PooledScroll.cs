@@ -64,12 +64,6 @@ namespace UI.CustomScrollRect
             _firstIndex = -1;
             Refresh();
         }
-
-        // private void OnEnable()
-        // {
-        //     Refresh();
-        // }
-
         private void Refresh()
         {
             float y = content.anchoredPosition.y;
