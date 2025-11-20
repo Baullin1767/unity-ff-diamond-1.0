@@ -192,7 +192,7 @@ MonoBehaviour:
   connectionErrorPopupIpad: {fileID: 385622348}
   connectionCheckInterval: 2
   ipadChecker: {fileID: 274540136}
-  hasInternetConnection: 0
+  hasInternetConnection: 1
 --- !u!114 &274540136
 MonoBehaviour:
   m_ObjectHideFlags: 0
