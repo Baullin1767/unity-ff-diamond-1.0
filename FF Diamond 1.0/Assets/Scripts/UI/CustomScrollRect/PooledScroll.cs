@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Data;
@@ -36,7 +37,7 @@ namespace UI.CustomScrollRect
 
         private object[] _data;
 
-        async void Awake()
+        async void OnEnable()
         {
             if (!scroll) scroll = GetComponent<ScrollRect>();
             if (!viewport) viewport = scroll.viewport;
@@ -63,6 +64,11 @@ namespace UI.CustomScrollRect
             _firstIndex = -1;
             Refresh();
         }
+
+        // private void OnEnable()
+        // {
+        //     Refresh();
+        // }
 
         private void Refresh()
         {

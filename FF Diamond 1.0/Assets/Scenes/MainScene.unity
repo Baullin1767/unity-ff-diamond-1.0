@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &145242138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6938517300056611358, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
+  m_PrefabInstance: {fileID: 8554525458226250903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &221011611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4253386734588573678, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
@@ -175,15 +180,19 @@ MonoBehaviour:
   Iphone: {fileID: 221011611}
   Ipad: {fileID: 8554525458226250904}
   preloadTypes: 0000000001000000020000000300000004000000050000000600000007000000
-  baseUIRoot: {fileID: 594986768}
-  loadingUIRoot: {fileID: 1379498749}
-  loadingScreenVideo: {fileID: 1657686477}
-  loadingProgressLabel: {fileID: 397538120}
-  connectionErrorPopup: {fileID: 2075144674}
-  viewControllerReference: {fileID: 903964572}
+  baseUIRootIphone: {fileID: 594986768}
+  loadingUIRootIphone: {fileID: 1379498749}
+  loadingScreenVideoIphone: {fileID: 1657686477}
+  loadingProgressLabelIphone: {fileID: 397538120}
+  baseUIRootIpad: {fileID: 145242138}
+  loadingUIRootIpad: {fileID: 1516245832}
+  loadingScreenVideoIpad: {fileID: 2005429244}
+  loadingProgressLabelIpad: {fileID: 1129694665}
+  connectionErrorPopupIphone: {fileID: 2075144674}
+  connectionErrorPopupIpad: {fileID: 385622348}
   connectionCheckInterval: 2
   ipadChecker: {fileID: 274540136}
-  hasInternetConnection: 1
+  hasInternetConnection: 0
 --- !u!114 &274540136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +253,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &385622348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2944552994909803242, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
+  m_PrefabInstance: {fileID: 8554525458226250903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231255d9cb094540858590d2c7fe2cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &397538120 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4730080155942363156, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
@@ -502,10 +522,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d6790f76452624fb816a48d5517b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1129694665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1807195237938555693, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
+  m_PrefabInstance: {fileID: 8554525458226250903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1379498749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3682433287074402824, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
   m_PrefabInstance: {fileID: 8197815783272927075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1516245832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7758098216283773233, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
+  m_PrefabInstance: {fileID: 8554525458226250903}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1599806897
 GameObject:
@@ -579,6 +615,11 @@ Transform:
 VideoPlayer:
   m_CorrespondingSourceObject: {fileID: 4005220883162563409, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
   m_PrefabInstance: {fileID: 8197815783272927075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!328 &2005429244 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 8008960917723859048, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
+  m_PrefabInstance: {fileID: 8554525458226250903}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2075144674 stripped
 MonoBehaviour:
@@ -927,22 +968,6 @@ PrefabInstance:
     - target: {fileID: 1572946922680892012, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852050443937152542, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
-      propertyPath: buttons.Array.data[5].componentButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852050443937152542, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
-      propertyPath: buttons.Array.data[6].componentButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852050443937152542, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
-      propertyPath: buttons.Array.data[7].componentButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852050443937152542, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
-      propertyPath: buttons.Array.data[8].componentButton
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2444199623404418735, guid: ab8df7bd94a576843b41ebc771817dac, type: 3}
       propertyPath: rewardLabel

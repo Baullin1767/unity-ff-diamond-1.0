@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using UI.ViewSystem;
 using UI.ViewSystem.UIViews.Popups;
+using UnityEngine.Serialization;
 using Zenject;
 using DataType = Data.DataType;
 using PathBuilder = Data.PathBuilder;
@@ -22,14 +23,19 @@ namespace Core
         [SerializeField] private GameObject Ipad;
         [Header("Preload Types")]
         [SerializeField] private DataType[] preloadTypes;
-        [Header("UI Transition")]
-        [SerializeField] private GameObject baseUIRoot;
-        [SerializeField] private GameObject loadingUIRoot;
-        [SerializeField] private VideoPlayer loadingScreenVideo;
-        [SerializeField] private TMP_Text loadingProgressLabel;
+        [Header("UI Transition Iphone")]
+        [SerializeField] private GameObject baseUIRootIphone;
+        [SerializeField] private GameObject loadingUIRootIphone;
+        [SerializeField] private VideoPlayer loadingScreenVideoIphone;
+        [SerializeField] private TMP_Text loadingProgressLabelIphone;
+        [Header("UI Transition Ipad")]
+        [SerializeField] private GameObject baseUIRootIpad;
+        [SerializeField] private GameObject loadingUIRootIpad;
+        [SerializeField] private VideoPlayer loadingScreenVideoIpad;
+        [SerializeField] private TMP_Text loadingProgressLabelIpad;
         [Header("Connection Handling")]
-        [SerializeField] private ConnectionErrorPopupUIView connectionErrorPopup;
-        [SerializeField] private UIViewController viewControllerReference;
+        [SerializeField] private ConnectionErrorPopupUIView connectionErrorPopupIphone;
+        [SerializeField] private ConnectionErrorPopupUIView connectionErrorPopupIpad;
         [SerializeField, Min(0.2f)] private float connectionCheckInterval = 2f;
         [Header("IpadChecker")]
         [SerializeField] private IpadChecker ipadChecker;
@@ -37,12 +43,21 @@ namespace Core
         [SerializeField] private bool hasInternetConnection = true;
 #endif
 
-        [InjectOptional] private IUIViewController _viewController;
+        [Inject] private IUIViewController _viewController;
 
         private UniTaskCompletionSource _reconnectCompletionSource;
         private CancellationTokenSource _connectionWatchCts;
         private bool _connectionLossPopupVisible;
         private bool _dependenciesWarningSent;
+        
+        
+        private GameObject baseUIRoot;
+        private GameObject loadingUIRoot;
+        private VideoPlayer loadingScreenVideo;
+        private TMP_Text loadingProgressLabel;
+        
+        
+        private ConnectionErrorPopupUIView connectionErrorPopup;
 
         private void Awake()
         {
@@ -52,21 +67,27 @@ namespace Core
             {
                 Ipad.SetActive(true);
                 Destroy(Iphone);
+                
+                baseUIRoot = baseUIRootIpad;
+                loadingUIRoot = loadingUIRootIpad;
+                loadingScreenVideo = loadingScreenVideoIpad;
+                loadingProgressLabel = loadingProgressLabelIpad;
+                connectionErrorPopup = connectionErrorPopupIpad;
             }
             else
             {
                 Iphone.SetActive(true);
                 Destroy(Ipad);
+                
+                baseUIRoot = baseUIRootIphone;
+                loadingUIRoot = loadingUIRootIphone;
+                loadingScreenVideo = loadingScreenVideoIphone;
+                loadingProgressLabel = loadingProgressLabelIphone;
+                connectionErrorPopup = connectionErrorPopupIphone;
             }
             
             if (!connectionErrorPopup)
                 connectionErrorPopup = FindObjectOfType<ConnectionErrorPopupUIView>(includeInactive: true);
-
-            if (!viewControllerReference)
-                viewControllerReference = FindObjectOfType<UIViewController>(includeInactive: true);
-
-            if (_viewController == null && viewControllerReference)
-                _viewController = viewControllerReference;
 
             if (!loadingScreenVideo && loadingUIRoot)
                 loadingScreenVideo = loadingUIRoot.GetComponentInChildren<VideoPlayer>(true);
