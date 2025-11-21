@@ -6,5 +6,6 @@ namespace UI.ViewSystem
         void ShowPopup(UIPopupId id, float reward, string result = "");
         void HidePopup(UIPopupId id);
         void HideAllPopups();
+        bool TryGetPopupView(UIPopupId id, out PopupUIView view);
     }
 }

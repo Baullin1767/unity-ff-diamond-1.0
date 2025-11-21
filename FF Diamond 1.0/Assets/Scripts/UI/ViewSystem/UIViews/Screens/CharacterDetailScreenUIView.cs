@@ -30,6 +30,7 @@ namespace UI.ViewSystem.UIViews
             nameText.text = data.name;
             skillName.text = data.skill.skillName;
             skillDesc.text = data.skill.skillDesc;
+            image.gameObject.SetActive(true);
             image.sprite = await DataManager.GetSprite(
                 $"{PathBuilder.GetBasePath(DataType.Characters)}/{data.image}");
             gender.text = data.biography.gender;

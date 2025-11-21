@@ -14,6 +14,7 @@ namespace UI.ViewSystem.UIViews.Items
         [Inject] private IMinigameCurrencyService _currencyService;
         public override void Bind<T>(T data)
         {
+            button.onClick.RemoveAllListeners();
             if (data is Store store)
             {
                 title.text = store.price.ToString();

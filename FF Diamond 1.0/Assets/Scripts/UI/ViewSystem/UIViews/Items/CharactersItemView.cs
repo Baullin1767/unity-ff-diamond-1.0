@@ -33,7 +33,7 @@ namespace UI.ViewSystem.UIViews.Items
         private void Awake()
         {
             _characterDetailScreenUIView = FindObjectOfType<CharacterDetailScreenUIView>();
-            _purchasePopupView = FindObjectOfType<PurchaseCostPopupUIView>(true);
+            _purchasePopupView = ResolvePurchasePopup();
             if (_purchasePopupView)
                 _purchasePopupView.PurchaseSucceeded += HandlePurchaseSucceeded;
         }
@@ -114,7 +114,7 @@ namespace UI.ViewSystem.UIViews.Items
 
         private void HandlePurchaseSucceeded(string context)
         {
-            if (string.IsNullOrEmpty(context) || !string.Equals(context, _purchaseContext, StringComparison.Ordinal))
+            if (!string.Equals(context, _purchaseContext, StringComparison.Ordinal))
                 return;
 
             if (_character != null)
@@ -131,6 +131,18 @@ namespace UI.ViewSystem.UIViews.Items
                 payButton.onClick.RemoveListener(OpenPayScreen);
                 payButton.gameObject.SetActive(false);
             }
+        }
+
+        private PurchaseCostPopupUIView ResolvePurchasePopup()
+        {
+            if (_uiViewController != null &&
+                _uiViewController.TryGetPopupView(UIPopupId.PurchaseCost, out var popup) &&
+                popup is PurchaseCostPopupUIView purchasePopup)
+            {
+                return purchasePopup;
+            }
+
+            return FindObjectOfType<PurchaseCostPopupUIView>(true);
         }
 
         private static string BuildPurchaseContext(Characters character)

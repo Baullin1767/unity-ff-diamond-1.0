@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Iphone: {fileID: 221011611}
   Ipad: {fileID: 8554525458226250904}
-  preloadTypes: 0000000001000000020000000300000004000000050000000600000007000000
+  preloadTypes: 0000000001000000020000000600000007000000
   baseUIRootIphone: {fileID: 594986768}
   loadingUIRootIphone: {fileID: 1379498749}
   loadingScreenVideoIphone: {fileID: 1657686477}
@@ -672,6 +672,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 1.6982117
       objectReference: {fileID: 0}
+    - target: {fileID: 3008726494824844033, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3682433287074402824, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -694,6 +698,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3872845941506797914, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135164703590756279, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4154403692419182313, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
@@ -727,6 +735,14 @@ PrefabInstance:
     - target: {fileID: 4253386734588573678, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327666961415506624, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4455057473126229485, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5019039766948058584, guid: b9fe46af422cd1f40811b9334ef88125, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -76,13 +76,11 @@ namespace UI.ViewSystem.UIViews.Popups
             {
                 HideSelf();
                 PurchaseSucceeded?.Invoke(_currentContext);
-                _currentContext = string.Empty;
                 _viewController?.ShowPopup(successPopupId, _currentCost);
             }
             else
             {
                 HideSelf();
-                _currentContext = string.Empty;
                 _viewController?.ShowPopup(insufficientPopupId, _currentCost);
             }
         }

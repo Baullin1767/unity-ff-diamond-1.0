@@ -98,6 +98,12 @@ namespace UI.ViewSystem
                 popup.Hide();
         }
 
+        public bool TryGetPopupView(UIPopupId id, out PopupUIView view)
+        {
+            EnsureInitialized();
+            return _popupLookup.TryGetValue(id, out view);
+        }
+
         public void SetLoadingVisible(bool visible)
         {
             if (!loadingUI)

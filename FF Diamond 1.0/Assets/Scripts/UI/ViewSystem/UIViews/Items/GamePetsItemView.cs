@@ -20,35 +20,76 @@ namespace UI.ViewSystem.UIViews.Items
 
         private CancellationTokenSource _imageLoadCts;
         private string _pendingImagePath;
+        private string _loadedImagePath;
 
         private void Awake()
         {
-            image.color = new Color(1, 1, 1, 0);
+            if (image)
+                image.color = new Color(1, 1, 1, 0);
+        }
+
+        private void OnDisable()
+        {
+            CancelImageLoad();
         }
 
         public override void Bind<T>(T data)
         {
-            ResetImage();
-
+            CancelImageLoad();
             if (data is not Pets petsData)
+            {
+                ResetImage();
                 return;
+            }
+
+            var nextImagePath = $"{PathBuilder.GetBasePath(DataType.Pets)}/{petsData.image}";
+            var needReload = !string.Equals(_loadedImagePath, nextImagePath, StringComparison.Ordinal);
+
+            if (needReload)
+                ResetImage();
+            else
+                ShowLoadedState();
 
             title.text = petsData.title;
             desc.text = petsData.desc;
             Enum.TryParse(petsData.type, out type);
             imageType.sprite = typeSprites[(int)type];
 
-            _pendingImagePath = $"{PathBuilder.GetBasePath(DataType.Pets)}/{petsData.image}";
-            BeginImageLoad(_pendingImagePath);
+            _pendingImagePath = nextImagePath;
+            if (needReload)
+                BeginImageLoad(_pendingImagePath);
         }
 
         private void ResetImage()
         {
             _pendingImagePath = null;
+            _loadedImagePath = null;
             if (image)
             {
                 image.color = new Color(1, 1, 1, 0);
-                imageLoader.SetActive(true);
+                image.sprite = null;
+                if (imageLoader)
+                    imageLoader.SetActive(true);
+            }
+        }
+
+        private void CancelImageLoad()
+        {
+            if (_imageLoadCts == null)
+                return;
+
+            _imageLoadCts.Cancel();
+            _imageLoadCts.Dispose();
+            _imageLoadCts = null;
+        }
+
+        private void ShowLoadedState()
+        {
+            if (image)
+            {
+                image.color = new Color(1, 1, 1, 1);
+                if (imageLoader)
+                    imageLoader.SetActive(false);
             }
         }
 
@@ -57,6 +98,7 @@ namespace UI.ViewSystem.UIViews.Items
             if (string.IsNullOrWhiteSpace(path))
                 return;
 
+            CancelImageLoad();
             var cts = new CancellationTokenSource();
             _imageLoadCts = cts;
             LoadImageAsync(path, cts).Forget();
@@ -73,8 +115,8 @@ namespace UI.ViewSystem.UIViews.Items
                 if (image)
                 {
                     image.sprite = sprite;
-                    image.color = new Color(1, 1, 1, 1);
-                    imageLoader.SetActive(false);
+                    _loadedImagePath = path;
+                    ShowLoadedState();
                 }
             }
             catch (OperationCanceledException)
