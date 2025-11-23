@@ -66,7 +66,7 @@ namespace Core
             if (ipadChecker.IsIPad())
             {
                 Ipad.SetActive(true);
-                Destroy(Iphone);
+                Iphone.SetActive(false);
                 
                 baseUIRoot = baseUIRootIpad;
                 loadingUIRoot = loadingUIRootIpad;
@@ -77,7 +77,7 @@ namespace Core
             else
             {
                 Iphone.SetActive(true);
-                Destroy(Ipad);
+                Ipad.SetActive(false);
                 
                 baseUIRoot = baseUIRootIphone;
                 loadingUIRoot = loadingUIRootIphone;
