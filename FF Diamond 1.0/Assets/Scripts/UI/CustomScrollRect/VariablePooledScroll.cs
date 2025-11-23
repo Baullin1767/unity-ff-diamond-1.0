@@ -278,7 +278,7 @@ namespace UI.CustomScrollRect
 
         private async UniTask EnsureLayoutReady()
         {
-            await UniTask.Yield(PlayerLoopTiming.EndOfFrame);
+            await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
 
             if (content)
                 LayoutRebuilder.ForceRebuildLayoutImmediate(content);

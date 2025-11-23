@@ -122,7 +122,7 @@ namespace UI.CustomScrollRect
 
         private async UniTaskVoid RefreshAfterLayout()
         {
-            await UniTask.Yield(PlayerLoopTiming.EndOfFrame);
+            await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
 
             if (content)
                 LayoutRebuilder.ForceRebuildLayoutImmediate(content);
