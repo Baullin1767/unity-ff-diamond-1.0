@@ -153,6 +153,8 @@ namespace Core
                         completed++;
                         UpdateLoadingProgress((float)completed / targets.Length);
                     }
+                    UpdateLoadingProgress(1f);
+                    await UniTask.Delay(500);
                 }
             }
             else
