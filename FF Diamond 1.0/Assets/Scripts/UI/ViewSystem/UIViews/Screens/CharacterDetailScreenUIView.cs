@@ -1,3 +1,4 @@
+using System.Collections;
 using Data;
 using TMPro;
 using UnityEngine;
@@ -20,9 +21,16 @@ namespace UI.ViewSystem.UIViews
         [SerializeField] private TMP_Text birthday;
         [SerializeField] private TMP_Text story;
         
+        [Header("Loading Panel")]
+        [SerializeField] private GameObject loadingPanel;
+        [SerializeField] private float loadingDurationSeconds = 2f;
+
+        private Coroutine _hideLoadingRoutine;
+        
         public override void Show()
         {
             rootGO.SetActive(true);
+            ShowLoadingPanel();
         }
 
         public async void Initialize(Characters data)
@@ -41,7 +49,78 @@ namespace UI.ViewSystem.UIViews
 
         public override void Hide()
         {
+            if (_hideLoadingRoutine != null)
+            {
+                StopCoroutine(_hideLoadingRoutine);
+                _hideLoadingRoutine = null;
+            }
+
+            if (loadingPanel)
+                loadingPanel.SetActive(false);
+
             rootGO.SetActive(false);
+        }
+
+        private void ShowLoadingPanel()
+        {
+            if (!loadingPanel)
+                loadingPanel = CreateRuntimeLoadingPanel();
+
+            if (!loadingPanel)
+                return;
+
+            loadingPanel.SetActive(true);
+            if (_hideLoadingRoutine != null)
+                StopCoroutine(_hideLoadingRoutine);
+
+            _hideLoadingRoutine = StartCoroutine(HideLoadingAfterDelay());
+        }
+
+        private IEnumerator HideLoadingAfterDelay()
+        {
+            if (loadingDurationSeconds > 0f)
+                yield return new WaitForSeconds(loadingDurationSeconds);
+
+            if (loadingPanel)
+                loadingPanel.SetActive(false);
+
+            _hideLoadingRoutine = null;
+        }
+
+        private GameObject CreateRuntimeLoadingPanel()
+        {
+            if (!rootGO)
+                return null;
+
+            var parent = rootGO.GetComponent<RectTransform>() ?? rootGO.AddComponent<RectTransform>();
+            var panel = new GameObject("LoadingPanel", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            var panelRect = panel.GetComponent<RectTransform>();
+            panelRect.SetParent(parent, false);
+            panelRect.anchorMin = Vector2.zero;
+            panelRect.anchorMax = Vector2.one;
+            panelRect.offsetMin = Vector2.zero;
+            panelRect.offsetMax = Vector2.zero;
+            panelRect.SetAsLastSibling();
+
+            var background = panel.GetComponent<Image>();
+            background.color = new Color(0f, 0f, 0f, 0.6f);
+
+            var textGO = new GameObject("Label", typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
+            var textRect = textGO.GetComponent<RectTransform>();
+            textRect.SetParent(panelRect, false);
+            textRect.anchorMin = Vector2.zero;
+            textRect.anchorMax = Vector2.one;
+            textRect.offsetMin = Vector2.zero;
+            textRect.offsetMax = Vector2.zero;
+
+            var text = textGO.GetComponent<TextMeshProUGUI>();
+            text.text = "Loading...";
+            text.alignment = TextAlignmentOptions.Center;
+            text.fontSize = 48f;
+            text.color = Color.white;
+
+            panel.SetActive(false);
+            return panel;
         }
     }
 }

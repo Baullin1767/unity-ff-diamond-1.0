@@ -9,7 +9,7 @@ namespace UI.CustomScrollRect
     /// Scroll view virtualization that supports dynamic per-item heights.
     /// </summary>
     [RequireComponent(typeof(ScrollRect))]
-    public class VariablePooledScroll : MonoBehaviour
+    public class VariablePooledScroll : MonoBehaviour, IVariableScrollOwner
     {
         [Header("Refs")]
         [SerializeField] private ScrollRect scroll;

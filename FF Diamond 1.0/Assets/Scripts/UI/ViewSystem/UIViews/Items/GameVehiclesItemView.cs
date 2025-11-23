@@ -2,12 +2,13 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Data;
+using UI.CustomScrollRect;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.CustomScrollRect.Items
 {
-    public class GameVehiclesItemView : OpenableItemView
+    public class GameVehiclesItemView : OpenableItemView, IScrollVisibilityHandler
     {
         [SerializeField] private Image image;
         [SerializeField] private GameObject imageLoader;
@@ -15,6 +16,7 @@ namespace UI.CustomScrollRect.Items
         private CancellationTokenSource _imageLoadCts;
         private string _pendingImagePath;
         private string _loadedImagePath;
+        private bool _isVisible;
 
         private void Awake()
         {
@@ -25,6 +27,7 @@ namespace UI.CustomScrollRect.Items
         private void OnDisable()
         {
             CancelImageLoad();
+            _isVisible = false;
         }
 
         public override void Bind<T>(T data)
@@ -47,10 +50,27 @@ namespace UI.CustomScrollRect.Items
                 ShowLoadedState();
 
             _pendingImagePath = nextImagePath;
-            if (needReload)
+            if (needReload && _isVisible)
                 BeginImageLoad(_pendingImagePath);
         }
 
+        public void OnVisibilityChanged(bool isVisible)
+        {
+            _isVisible = isVisible;
+
+            if (_isVisible)
+            {
+                if (!string.IsNullOrWhiteSpace(_pendingImagePath) &&
+                    !string.Equals(_loadedImagePath, _pendingImagePath, StringComparison.Ordinal))
+                {
+                    BeginImageLoad(_pendingImagePath);
+                }
+            }
+            else if (!string.Equals(_loadedImagePath, _pendingImagePath, StringComparison.Ordinal))
+            {
+                CancelImageLoad();
+            }
+        }
 
         private void ResetImage()
         {
@@ -87,7 +107,7 @@ namespace UI.CustomScrollRect.Items
 
         private void BeginImageLoad(string path)
         {
-            if (string.IsNullOrWhiteSpace(path))
+            if (string.IsNullOrWhiteSpace(path) || !_isVisible)
                 return;
 
             CancelImageLoad();

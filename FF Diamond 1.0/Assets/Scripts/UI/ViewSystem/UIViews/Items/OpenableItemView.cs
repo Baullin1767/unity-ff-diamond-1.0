@@ -15,7 +15,7 @@ public class OpenableItemView : BaseItemView, IVariableScrollItem
     [SerializeField] private float tweenDuration = 0.35f;
     [SerializeField] private float contentPaddingUp = 228f;
     [SerializeField] private float contentPaddingDown = 40f;
-    private VariablePooledScroll _owner;
+    private IVariableScrollOwner _owner;
     private Tween _heightTween;
     
     public override void Bind<T>(T data)
@@ -34,7 +34,7 @@ public class OpenableItemView : BaseItemView, IVariableScrollItem
         toggle.onValueChanged.AddListener(OnToggleValueChanged);
     }
 
-    public void SetScrollOwner(VariablePooledScroll scroll)
+    public void SetScrollOwner(IVariableScrollOwner scroll)
     {
         _owner = scroll;
     }

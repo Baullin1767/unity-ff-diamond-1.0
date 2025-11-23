@@ -161,8 +161,12 @@ PrefabInstance:
       value: HeaderMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6761017101101456458, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761017101101456458, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
       propertyPath: m_fontSize
-      value: 100
+      value: 99.5
       objectReference: {fileID: 0}
     - target: {fileID: 6761017101101456458, guid: 65525a8e8848be4459e8e4cf4535841d, type: 3}
       propertyPath: m_fontSizeBase

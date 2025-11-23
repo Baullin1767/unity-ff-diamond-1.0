@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace UI.ViewSystem.UIViews.Items
 {
-    public class GamePetsItemView : BaseItemView
+    public class GamePetsItemView : BaseItemView, IScrollVisibilityHandler
     {
         [SerializeField] private TMP_Text desc;
         [SerializeField] private Image image;
@@ -21,6 +21,7 @@ namespace UI.ViewSystem.UIViews.Items
         private CancellationTokenSource _imageLoadCts;
         private string _pendingImagePath;
         private string _loadedImagePath;
+        private bool _isVisible;
 
         private void Awake()
         {
@@ -31,6 +32,7 @@ namespace UI.ViewSystem.UIViews.Items
         private void OnDisable()
         {
             CancelImageLoad();
+            _isVisible = false;
         }
 
         public override void Bind<T>(T data)
@@ -56,8 +58,26 @@ namespace UI.ViewSystem.UIViews.Items
             imageType.sprite = typeSprites[(int)type];
 
             _pendingImagePath = nextImagePath;
-            if (needReload)
+            if (needReload && _isVisible)
                 BeginImageLoad(_pendingImagePath);
+        }
+
+        public void OnVisibilityChanged(bool isVisible)
+        {
+            _isVisible = isVisible;
+
+            if (_isVisible)
+            {
+                if (!string.IsNullOrWhiteSpace(_pendingImagePath) &&
+                    !string.Equals(_loadedImagePath, _pendingImagePath, StringComparison.Ordinal))
+                {
+                    BeginImageLoad(_pendingImagePath);
+                }
+            }
+            else if (!string.Equals(_loadedImagePath, _pendingImagePath, StringComparison.Ordinal))
+            {
+                CancelImageLoad();
+            }
         }
 
         private void ResetImage()
@@ -95,7 +115,7 @@ namespace UI.ViewSystem.UIViews.Items
 
         private void BeginImageLoad(string path)
         {
-            if (string.IsNullOrWhiteSpace(path))
+            if (string.IsNullOrWhiteSpace(path) || !_isVisible)
                 return;
 
             CancelImageLoad();
