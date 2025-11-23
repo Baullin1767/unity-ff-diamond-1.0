@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,6 +44,8 @@ namespace UI.CustomScrollRect
             if (!scroll) scroll = GetComponent<ScrollRect>();
             if (!viewport) viewport = scroll.viewport;
 
+            await EnsureLayoutReady();
+
             _data = await DataManager.GetItemsData(dataType);
             _totalCount = _data.Length;
 
@@ -59,6 +62,7 @@ namespace UI.CustomScrollRect
 
             scroll.onValueChanged.AddListener(_ => Refresh());
             Refresh(force: true);
+            RefreshAfterLayout().Forget();
         }
 
         private void InitializeHeights()
@@ -159,12 +163,13 @@ namespace UI.CustomScrollRect
         {
             float top = _itemOffsets[dataIndex];
             float height = _itemHeights[dataIndex];
+            float width = CalculateWidth();
 
             rt.anchorMin = new Vector2(0f, 1f);
             rt.anchorMax = new Vector2(1f, 1f);
             rt.pivot = new Vector2(0.5f, 1f);
             rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, top, height);
-            rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0f, content.rect.width);
+            rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0f, width);
         }
 
         private int FindFirstVisibleIndex(float scrollY)
@@ -253,6 +258,38 @@ namespace UI.CustomScrollRect
                 return defaultItemHeight;
 
             return _itemHeights[dataIndex];
+        }
+
+        private float CalculateWidth()
+        {
+            float width = content ? content.rect.width : 0f;
+
+            if ((width <= 0f || float.IsNaN(width)) && viewport)
+                width = viewport.rect.width;
+
+            if ((width <= 0f || float.IsNaN(width)) && content?.parent is RectTransform parent)
+                width = parent.rect.width;
+
+            if (width <= 0f || float.IsNaN(width))
+                width = Screen.width;
+
+            return width;
+        }
+
+        private async UniTask EnsureLayoutReady()
+        {
+            await UniTask.Yield(PlayerLoopTiming.EndOfFrame);
+
+            if (content)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+            if (viewport)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(viewport);
+        }
+
+        private async UniTaskVoid RefreshAfterLayout()
+        {
+            await EnsureLayoutReady();
+            Refresh(force: true);
         }
     }
 }

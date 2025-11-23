@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -63,6 +64,7 @@ namespace UI.CustomScrollRect
             scroll.onValueChanged.AddListener(_ => Refresh());
             _firstIndex = -1;
             Refresh();
+            RefreshAfterLayout().Forget();
         }
         private void Refresh()
         {
@@ -83,11 +85,12 @@ namespace UI.CustomScrollRect
 
                     var rt = (RectTransform)view.transform;
                     float top = dataIndex * _row;
+                    float width = CalculateWidth();
                     rt.anchorMin = new Vector2(0, 1);
                     rt.anchorMax = new Vector2(1, 1);
                     rt.pivot = new Vector2(0.5f, 1f);
                     rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, top, itemHeight);
-                    rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, content.rect.width);
+                    rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, width);
 
                     if (view is IIndexedScrollItem indexed)
                         indexed.SetDataIndex(dataIndex);
@@ -99,6 +102,34 @@ namespace UI.CustomScrollRect
                     if (view.gameObject.activeSelf) view.gameObject.SetActive(false);
                 }
             }
+        }
+
+        private float CalculateWidth()
+        {
+            float width = content ? content.rect.width : 0f;
+
+            if ((width <= 0f || float.IsNaN(width)) && viewport)
+                width = viewport.rect.width;
+
+            if ((width <= 0f || float.IsNaN(width)) && content?.parent is RectTransform parent)
+                width = parent.rect.width;
+
+            if (width <= 0f || float.IsNaN(width))
+                width = Screen.width;
+
+            return width;
+        }
+
+        private async UniTaskVoid RefreshAfterLayout()
+        {
+            await UniTask.Yield(PlayerLoopTiming.EndOfFrame);
+
+            if (content)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+            if (viewport)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(viewport);
+
+            Refresh();
         }
     }
 }
