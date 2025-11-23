@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a32ae22d4144d7b15f9fd6a0aca1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIpad: 0
+  isIpad: 1
 --- !u!1 &375400373
 GameObject:
   m_ObjectHideFlags: 0
