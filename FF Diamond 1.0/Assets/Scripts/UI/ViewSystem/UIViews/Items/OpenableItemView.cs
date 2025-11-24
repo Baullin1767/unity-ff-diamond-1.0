@@ -57,7 +57,7 @@ public class OpenableItemView : BaseItemView, IVariableScrollItem
         toggle.SetIsOnWithoutNotify(expanded);
     }
 
-    private void OnToggleValueChanged(bool value)
+    protected virtual void OnToggleValueChanged(bool value)
     {
         float target = value ? CalculateExpandedHeight() : collapsedHeight;
 

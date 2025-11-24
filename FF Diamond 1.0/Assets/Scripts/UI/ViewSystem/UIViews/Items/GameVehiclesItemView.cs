@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Data;
-using UI.CustomScrollRect;
+// using UI.CustomScrollRect;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +26,7 @@ namespace UI.CustomScrollRect.Items
 
         private void OnDisable()
         {
-            CancelImageLoad();
+            // CancelImageLoad();
             _isVisible = false;
         }
 
@@ -37,7 +37,7 @@ namespace UI.CustomScrollRect.Items
             if (data is not GameVehicles gameVehicles)
                 return;
 
-            CancelImageLoad();
+            // CancelImageLoad();
 
             title.text = gameVehicles.title;
             content.text = gameVehicles.desc;
@@ -53,7 +53,6 @@ namespace UI.CustomScrollRect.Items
             if (needReload && _isVisible)
                 BeginImageLoad(_pendingImagePath);
         }
-
         public void OnVisibilityChanged(bool isVisible)
         {
             _isVisible = isVisible;
@@ -68,7 +67,7 @@ namespace UI.CustomScrollRect.Items
             }
             else if (!string.Equals(_loadedImagePath, _pendingImagePath, StringComparison.Ordinal))
             {
-                CancelImageLoad();
+                // CancelImageLoad();
             }
         }
 
@@ -84,16 +83,16 @@ namespace UI.CustomScrollRect.Items
                     imageLoader.SetActive(true);
             }
         }
-
-        private void CancelImageLoad()
-        {
-            if (_imageLoadCts == null)
-                return;
-
-            _imageLoadCts.Cancel();
-            _imageLoadCts.Dispose();
-            _imageLoadCts = null;
-        }
+        //
+        // private void CancelImageLoad()
+        // {
+        //     if (_imageLoadCts == null)
+        //         return;
+        //
+        //     _imageLoadCts.Cancel();
+        //     _imageLoadCts.Dispose();
+        //     _imageLoadCts = null;
+        // }
 
         private void ShowLoadedState()
         {
@@ -110,7 +109,7 @@ namespace UI.CustomScrollRect.Items
             if (string.IsNullOrWhiteSpace(path) || !_isVisible)
                 return;
 
-            CancelImageLoad();
+            // CancelImageLoad();
             var cts = new CancellationTokenSource();
             _imageLoadCts = cts;
             LoadImageAsync(path, cts).Forget();
