@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Iphone: {fileID: 221011611}
   Ipad: {fileID: 8554525458226250904}
-  preloadTypes: 00000000010000000600000007000000
+  preloadTypes: 000000000600000007000000
   baseUIRootIphone: {fileID: 594986768}
   loadingUIRootIphone: {fileID: 1379498749}
   loadingScreenVideoIphone: {fileID: 1657686477}

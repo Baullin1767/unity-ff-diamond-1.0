@@ -154,7 +154,7 @@ namespace Core
                         UpdateLoadingProgress((float)completed / targets.Length);
                     }
                     UpdateLoadingProgress(1f);
-                    await UniTask.Delay(500);
+                    await UniTask.Delay(250);
                 }
             }
             else
