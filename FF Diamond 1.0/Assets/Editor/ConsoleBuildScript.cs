@@ -1,12 +1,11 @@
-using System;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
-using UnityEngine;
-
+using System.Linq; // Для Any и Where
+using UnityEngine; // Для LogType и Debug
 
 namespace Editor
 {
-    public class ConsoleBuildScript : MonoBehaviour
+    public class ConsoleBuildScript
     {
         [MenuItem("Build/BuildIOS")]
         public static void MyBuildIOS()
@@ -14,35 +13,66 @@ namespace Editor
             MyBuild(BuildTarget.iOS);
         }
 
-
         [MenuItem("Build/BuildAndroid")]
         public static void MyBuildAndroid()
         {
             MyBuild(BuildTarget.Android);
         }
-
+        
         private static void MyBuild(BuildTarget buildTarget)
         {
-            var buildPlayerOptions = new BuildPlayerOptions
+            // Проверка существования сцен
+            string[] scenes = new[]
             {
-                scenes = new[] { "Assets/Scenes/MainScene.unity" } 
+                "Assets/Scenes/MainScene.unity"
+            };
+            foreach (var scene in scenes)
+            {
+                if (!System.IO.File.Exists(scene))
+                {
+                    UnityEngine.Debug.LogError($"Scene not found: {scene}");
+                    return;
+                }
+            }
+
+            // Путь для вывода билда
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
+            string buildPath = System.IO.Path.Combine(path, "workspace", "test-unity-build2",
+                buildTarget == BuildTarget.iOS ? "iOSBuild" : "AndroidBuild");
+            if (!System.IO.Directory.Exists(buildPath))
+            {
+                System.IO.Directory.CreateDirectory(buildPath);
+            }
+
+            // Настройка сборки
+            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
+            {
+                scenes = scenes,
+                locationPathName = buildPath,
+                target = buildTarget,
+                options = BuildOptions.None
             };
 
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            buildPlayerOptions.locationPathName = $"{path}/workspace/test-unity-build2";
-            buildPlayerOptions.target = buildTarget;
             EditorUserBuildSettings.overrideMaxTextureSize = 512;
-            buildPlayerOptions.options = BuildOptions.None;
 
-            var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
-            var summary = report.summary;
+            // Выполнение сборки
+            BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+            BuildSummary summary = report.summary;
+
             if (summary.result == BuildResult.Succeeded)
             {
-                Debug.Log("Build succeeded: " + summary.totalSize + " bytes");
+                UnityEngine.Debug.Log($"Build succeeded: {summary.totalSize} bytes");
             }
-            else if (summary.result == BuildResult.Failed)
+            else
             {
-                Debug.Log("Build failed");
+                UnityEngine.Debug.LogError($"Build failed: {summary.totalErrors} errors");
+                foreach (var step in report.steps)
+                {
+                    if (step.messages.Any(m => m.type == LogType.Error)) // Используем Any с LINQ
+                    {
+                        UnityEngine.Debug.LogError($"Step {step.name} failed: {string.Join(", ", step.messages.Where(m => m.type == LogType.Error).Select(m => m.content))}"); // Используем Where с LINQ
+                    }
+                }
             }
         }
     }

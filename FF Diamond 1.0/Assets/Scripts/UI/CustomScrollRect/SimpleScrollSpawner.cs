@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -24,6 +23,7 @@ namespace UI.CustomScrollRect
 
         [Header("Data Type")]
         [SerializeField] private DataType dataType;
+        [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
 
         [Inject] private DiContainer _container;
 
@@ -124,6 +124,7 @@ namespace UI.CustomScrollRect
                 }
 
                 Relayout();
+                RelayoutAfterLayout().Forget();
             }
             catch (OperationCanceledException)
             {
@@ -161,9 +162,7 @@ namespace UI.CustomScrollRect
                 return;
 
             float y = 0f;
-            float width = content.rect.width;
-            if (width <= 0f && viewport)
-                width = viewport.rect.width;
+            float width = CalculateWidth();
 
             for (int i = 0; i < _items.Count; i++)
             {
@@ -184,6 +183,8 @@ namespace UI.CustomScrollRect
             float targetHeight = _items.Count > 0 ? y - spacing + padding : 0f;
             content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Mathf.Max(0f, targetHeight));
             UpdateVisibility(force: true);
+            verticalLayoutGroup.enabled = true;
+            verticalLayoutGroup.enabled = false;
         }
 
         private void OnScrollChanged(Vector2 _)
@@ -218,6 +219,9 @@ namespace UI.CustomScrollRect
 
         private bool IsVisible(RectTransform item, Rect viewportRect)
         {
+            if (!viewport)
+                return false;
+
             var bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(viewport, item);
 
             return bounds.max.y >= viewportRect.min.y &&
@@ -237,6 +241,38 @@ namespace UI.CustomScrollRect
         public void NotifyItemStateChanged(BaseItemView view, bool expanded)
         {
             _layoutDirty = true;
+        }
+
+        private float CalculateWidth()
+        {
+            float width = content ? content.rect.width : 0f;
+
+            if ((width <= 0f || float.IsNaN(width)) && viewport)
+                width = viewport.rect.width;
+
+            if ((width <= 0f || float.IsNaN(width)) && content?.parent is RectTransform parent)
+                width = parent.rect.width;
+
+            if (width <= 0f || float.IsNaN(width))
+                width = Screen.width;
+
+            return width;
+        }
+
+        private async UniTask EnsureLayoutReady()
+        {
+            await UniTask.WaitForEndOfFrame();
+
+            if (content)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+            if (viewport)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(viewport);
+        }
+
+        private async UniTaskVoid RelayoutAfterLayout()
+        {
+            await EnsureLayoutReady();
+            Relayout();
         }
 
         private void DisposeSpawnCts()
